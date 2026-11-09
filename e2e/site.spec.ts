@@ -31,6 +31,16 @@ test.describe('navigation and languages', () => {
     }
   })
 
+  test('Italian and French pages show no Arabic text', async ({ page }) => {
+    for (const path of ['/it', '/fr', '/it/dona', '/fr/chi-siamo']) {
+      await page.goto(path)
+      const text = await page.locator('body').innerText()
+      expect(text, path).not.toMatch(/[\u0600-\u06FF]/)
+    }
+    await page.goto('/it')
+    await expect(page.locator('main')).toContainText('La comunità algerina di Brescia')
+  })
+
   test('Arabic is right-to-left', async ({ page }) => {
     await page.goto('/ar')
     await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')

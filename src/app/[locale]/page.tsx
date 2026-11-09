@@ -74,10 +74,8 @@ export default async function HomePage() {
               <div className="flex aspect-[9/10] items-center justify-center rounded-[2.5rem] bg-gradient-to-br from-primary-600 to-primary-900 ring-1 ring-white/15">
                 <div className="text-center">
                   <LogoMark className="mx-auto size-40 drop-shadow-xl" />
-                  <p className="mt-8 font-display text-4xl font-bold" lang="ar" dir="rtl">
-                    بلادي
-                  </p>
-                  <p className="mt-2 text-primary-100">Brescia · Algérie</p>
+                  <p className="mt-8 px-6 font-display text-3xl font-bold xl:text-4xl">{settings.title}</p>
+                  <p className="mt-2 px-6 text-primary-100">{settings.tagline}</p>
                 </div>
               </div>
             )}
