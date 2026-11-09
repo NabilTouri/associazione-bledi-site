@@ -1,4 +1,4 @@
-import { House, Settings, Users } from 'lucide-react'
+import { HandHeart, House, Scale, Settings, Users } from 'lucide-react'
 import type { StructureResolver } from 'sanity/structure'
 
 /** Studio sidebar: singletons first, then content grouped by who edits it. */
@@ -14,6 +14,11 @@ export const structure: StructureResolver = (S) =>
             .items([
               S.listItem().title('Home page').icon(House).child(S.document().schemaType('homePage').documentId('homePage')),
               S.listItem().title('Chi siamo').icon(Users).child(S.document().schemaType('aboutPage').documentId('aboutPage')),
+              S.listItem().title('Donazioni').icon(HandHeart).child(S.document().schemaType('donatePage').documentId('donatePage')),
+              S.listItem()
+                .title('Trasparenza')
+                .icon(Scale)
+                .child(S.document().schemaType('transparencyPage').documentId('transparencyPage')),
               S.documentTypeListItem('legalPage').title('Pagine legali'),
             ]),
         ),

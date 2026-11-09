@@ -32,6 +32,17 @@ ottiene un'anteprima con un indirizzo proprio.
 
 Finché Sanity non è collegato, ogni pagina mostra **contenuti di esempio** segnalati da un avviso.
 
+### Cosa si modifica dallo Studio e cosa nel codice
+
+| Nello Studio (redazione, senza deploy)                                                      | Nel codice (`src/messages/*.json`, con una PR)              |
+| ------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Notizie, eventi, galleria, attività, direttivo, documenti                                   | Pulsanti, menu, etichette ed errori dei moduli              |
+| Home: etichetta, titolo, testi, riquadri, "Fai parte della comunità"                        | Passaggi del percorso di donazione                          |
+| Chi siamo, pagine legali                                                                    | Nomi delle preghiere, pagina 404                            |
+| Donazioni: avviso demo, impatto degli importi, bonifico, 5×1000, detraibilità, volontariato | Testi di riserva usati quando un campo dello Studio è vuoto |
+| Trasparenza: avviso RUNTS, "Cosa pubblicheremo"                                             |                                                             |
+| Impostazioni: contatti, sede, social, IBAN, stato RUNTS, pagamenti attivi                   |                                                             |
+
 ## Tecnologie
 
 - [Next.js 16](https://nextjs.org) (App Router, Cache Components) + TypeScript + Tailwind CSS 4

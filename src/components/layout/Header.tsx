@@ -44,7 +44,9 @@ export function Header({ locale, dict, siteName }: { locale: Locale; dict: Dicti
             </ButtonLink>
           </div>
           <MobileMenu
-            items={[...items, { key: 'join', label: dict.nav.join, href: href(locale, routes.join) }]}
+            siteName={siteName}
+            items={[{ key: 'home', label: dict.nav.home, href: href(locale) }, ...items]}
+            join={{ label: dict.nav.join, href: href(locale, routes.join) }}
             donate={{ label: dict.nav.donate, href: href(locale, routes.donate) }}
             labels={{ open: dict.nav.menu, close: dict.nav.close }}
           />

@@ -6,7 +6,7 @@ import { PageHeader } from '@/components/ui/PageHeader'
 import { Section } from '@/components/ui/Section'
 import { getDictionary, getLocale } from '@/i18n/dictionaries'
 import { resolveSettings } from '@/lib/site'
-import { getSiteSettings, getTransparencyDocuments } from '@/sanity/lib/data'
+import { getSiteSettings, getTransparencyDocuments, getTransparencyPage } from '@/sanity/lib/data'
 
 export async function generateMetadata(): Promise<Metadata> {
   const dict = getDictionary(await getLocale())
@@ -16,9 +16,17 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function TransparencyPage() {
   const locale = await getLocale()
   const dict = getDictionary(locale)
-  const [settingsData, documents] = await Promise.all([getSiteSettings(locale), getTransparencyDocuments(locale)])
+  const [settingsData, documents, page] = await Promise.all([
+    getSiteSettings(locale),
+    getTransparencyDocuments(locale),
+    getTransparencyPage(locale),
+  ])
   const settings = resolveSettings(settingsData, dict)
   const registered = settings.runtsStatus === 'registered'
+  // Texts edited in Sanity ("Pagina Trasparenza"), with the dictionary as fallback.
+  const runtsTitle = page?.runtsTitle ?? dict.transparency.runtsTitle
+  const runtsText = page?.runtsText ?? dict.transparency.runtsText
+  const planned = page?.planned?.length ? page.planned : dict.transparency.planned.map((label) => ({ label, done: false }))
 
   return (
     <>
@@ -40,8 +48,8 @@ export default async function TransparencyPage() {
             )}
           </dl>
         ) : (
-          <Notice variant="soon" title={dict.transparency.runtsTitle} className="mb-10">
-            {dict.transparency.runtsText}
+          <Notice variant="soon" title={runtsTitle} className="mb-10">
+            {runtsText}
           </Notice>
         )}
 
@@ -82,13 +90,12 @@ export default async function TransparencyPage() {
           <div className="rounded-3xl bg-sand-100 p-6 ring-1 ring-sand-200">
             <h2 className="text-xl font-bold text-primary-900">{dict.transparency.plannedTitle}</h2>
             <ul className="mt-4 space-y-3">
-              {dict.transparency.planned.map((item, index) => {
-                const done = index === 4 ? registered : false
-                const Icon = done ? CheckCircle2 : Circle
+              {planned.map((item) => {
+                const Icon = item.done ? CheckCircle2 : Circle
                 return (
-                  <li key={item} className="flex gap-3">
-                    <Icon aria-hidden className={`mt-0.5 size-5 shrink-0 ${done ? 'text-primary-600' : 'text-sand-300'}`} />
-                    <span>{item}</span>
+                  <li key={item.label} className="flex gap-3">
+                    <Icon aria-hidden className={`mt-0.5 size-5 shrink-0 ${item.done ? 'text-primary-600' : 'text-sand-300'}`} />
+                    <span>{item.label}</span>
                   </li>
                 )
               })}

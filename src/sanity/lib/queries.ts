@@ -49,6 +49,7 @@ export const siteSettingsQuery = defineQuery(`*[_id == "siteSettings"][0]{
 }`)
 
 export const homePageQuery = defineQuery(`*[_id == "homePage"][0]{
+  "eyebrow": coalesce(eyebrow[$locale], eyebrow.it),
   "heroTitle": coalesce(heroTitle[$locale], heroTitle.it),
   "heroSubtitle": coalesce(heroSubtitle[$locale], heroSubtitle.it),
   heroImage,
@@ -57,6 +58,37 @@ export const homePageQuery = defineQuery(`*[_id == "homePage"][0]{
   "pillars": pillars[]{
     "title": coalesce(title[$locale], title.it),
     "text": coalesce(text[$locale], text.it)
+  },
+  "joinTitle": coalesce(joinTitle[$locale], joinTitle.it),
+  "joinText": coalesce(joinText[$locale], joinText.it)
+}`)
+
+const card = (name: string) => /* groq */ `"${name}": {
+    "title": coalesce(${name}.title[$locale], ${name}.title.it),
+    "text": coalesce(${name}.text[$locale], ${name}.text.it)
+  }`
+
+export const donatePageQuery = defineQuery(`*[_id == "donatePage"][0]{
+  "demoTitle": coalesce(demoTitle[$locale], demoTitle.it),
+  "demoText": coalesce(demoText[$locale], demoText.it),
+  "impact": {
+    "10": coalesce(impact.amount10[$locale], impact.amount10.it),
+    "25": coalesce(impact.amount25[$locale], impact.amount25.it),
+    "50": coalesce(impact.amount50[$locale], impact.amount50.it),
+    "100": coalesce(impact.amount100[$locale], impact.amount100.it)
+  },
+  ${card('bank')},
+  ${card('fiveXMille')},
+  ${card('tax')},
+  ${card('volunteer')}
+}`)
+
+export const transparencyPageQuery = defineQuery(`*[_id == "transparencyPage"][0]{
+  "runtsTitle": coalesce(runtsTitle[$locale], runtsTitle.it),
+  "runtsText": coalesce(runtsText[$locale], runtsText.it),
+  "planned": planned[defined(label.it)]{
+    "label": coalesce(label[$locale], label.it),
+    "done": coalesce(done, false)
   }
 }`)
 

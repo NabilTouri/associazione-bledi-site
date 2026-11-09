@@ -8,6 +8,7 @@ import type { Dictionary } from '@/i18n/dictionaries'
 import { startDonation } from '@/lib/actions'
 import { formatCurrency } from '@/lib/format'
 import { formatCardNumber, formatExpiry, isValidCvc, isValidExpiry, luhnCheck } from '@/lib/payments/card'
+import type { ImpactAmount } from '@/sanity/lib/types'
 import { donationSchema, fieldErrors, MAX_DONATION, MIN_DONATION, type DonationInput } from '@/lib/validation'
 
 import { Field, FieldError } from '../forms/fields'
@@ -22,7 +23,18 @@ const steps: Step[] = ['amount', 'details', 'payment', 'done']
 const presets = [10, 25, 50, 100] as const
 const DEMO_PROCESSING_MS = 1200
 
-export function DonationFlow({ locale, labels, formLabels }: { locale: Locale; labels: Labels; formLabels: FormLabels }) {
+export function DonationFlow({
+  locale,
+  labels,
+  formLabels,
+  impact,
+}: {
+  locale: Locale
+  labels: Labels
+  formLabels: FormLabels
+  /** "What your donation does" sentence per preset amount (from Sanity or the dictionary). */
+  impact: Record<ImpactAmount, string>
+}) {
   const [step, setStep] = useState<Step>('amount')
   const [frequency, setFrequency] = useState<DonationInput['frequency']>('monthly')
   const [preset, setPreset] = useState<number | null>(25)
@@ -122,7 +134,7 @@ export function DonationFlow({ locale, labels, formLabels }: { locale: Locale; l
                   {(['one_time', 'monthly'] as const).map((value) => (
                     <label
                       key={value}
-                      className="flex cursor-pointer items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-muted has-[:checked]:bg-white has-[:checked]:text-primary-800 has-[:checked]:shadow-sm"
+                      className="flex cursor-pointer items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-muted has-[:checked]:bg-white has-[:checked]:text-primary-800 has-[:checked]:shadow-sm has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primary-500"
                     >
                       <input
                         type="radio"
@@ -145,7 +157,7 @@ export function DonationFlow({ locale, labels, formLabels }: { locale: Locale; l
                   {presets.map((value) => (
                     <label
                       key={value}
-                      className="flex cursor-pointer flex-col items-center rounded-2xl border-2 border-sand-200 bg-white px-3 py-4 text-center has-[:checked]:border-primary-500 has-[:checked]:bg-primary-50"
+                      className="flex cursor-pointer flex-col items-center rounded-2xl border-2 border-sand-200 bg-white px-3 py-4 text-center transition-colors hover:border-sand-300 has-[:checked]:border-primary-500 has-[:checked]:bg-primary-50 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primary-500 has-[:focus-visible]:ring-offset-2"
                     >
                       <input
                         type="radio"
@@ -165,33 +177,42 @@ export function DonationFlow({ locale, labels, formLabels }: { locale: Locale; l
                     </label>
                   ))}
                 </div>
-                <label className="mt-4 block">
-                  <span className="mb-1.5 block text-sm font-semibold">{labels.customAmount}</span>
-                  <div className="relative">
-                    <span className="pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 font-semibold text-muted">€</span>
-                    <input
-                      type="text"
-                      inputMode="decimal"
-                      name="customAmount"
-                      value={custom}
-                      placeholder="35"
-                      onFocus={() => setPreset(null)}
-                      onChange={(event) => {
-                        setPreset(null)
-                        setErrors({})
-                        setCustom(event.target.value.replace(/[^\d.,]/g, ''))
-                      }}
-                      aria-invalid={err('amount') ? true : undefined}
-                      aria-describedby={err('amount') ? 'amount-error' : undefined}
-                      className="field-input ps-9"
-                    />
-                  </div>
+                <label
+                  className={`mt-3 flex items-center gap-3 rounded-2xl border-2 px-4 py-3 transition-colors focus-within:border-primary-500 ${
+                    preset === null ? 'border-primary-500 bg-primary-50' : 'border-sand-200 bg-white hover:border-sand-300'
+                  } ${err('amount') ? 'border-accent-500!' : ''}`}
+                >
+                  <span className="text-sm font-semibold whitespace-nowrap text-muted">{labels.customAmount}</span>
+                  <span className="ms-auto flex items-baseline gap-1.5">
+                    <span className="flex items-baseline gap-1.5" dir="ltr">
+                      <span aria-hidden className="text-xl font-bold text-primary-900">
+                        €
+                      </span>
+                      <input
+                        type="text"
+                        inputMode="decimal"
+                        name="customAmount"
+                        value={custom}
+                        placeholder="35"
+                        maxLength={8}
+                        onFocus={() => setPreset(null)}
+                        onChange={(event) => {
+                          setPreset(null)
+                          setErrors({})
+                          setCustom(event.target.value.replace(/[^\d.,]/g, ''))
+                        }}
+                        aria-label={labels.customAmount}
+                        aria-invalid={err('amount') ? true : undefined}
+                        aria-describedby={err('amount') ? 'amount-error' : undefined}
+                        className="w-24 border-0 border-b-2 border-dashed border-sand-300 bg-transparent p-0 text-end text-2xl font-bold text-primary-900 placeholder:text-sand-300 focus:border-primary-500 focus:outline-none"
+                      />
+                    </span>
+                    {frequency === 'monthly' && <span className="text-xs text-muted">{labels.perMonth}</span>}
+                  </span>
                 </label>
                 <FieldError id="amount-error" error={err('amount')} labels={formLabels} />
                 {preset && (
-                  <p className="mt-4 rounded-2xl bg-primary-50 p-4 text-sm text-primary-900">
-                    {labels.impact[String(preset) as keyof Labels['impact']]}
-                  </p>
+                  <p className="mt-4 rounded-2xl bg-primary-50 p-4 text-sm text-primary-900">{impact[String(preset) as ImpactAmount]}</p>
                 )}
               </fieldset>
 
@@ -247,21 +268,21 @@ export function DonationFlow({ locale, labels, formLabels }: { locale: Locale; l
                 onChange={(event) => setDonor({ ...donor, message: event.target.value })}
                 labels={formLabels}
               />
-              <label className="flex items-center gap-3 text-sm">
+              <label className="flex cursor-pointer items-center gap-3 text-sm">
                 <input
                   type="checkbox"
                   checked={donor.anonymous}
                   onChange={(event) => setDonor({ ...donor, anonymous: event.target.checked })}
-                  className="size-5 accent-primary-600"
+                  className="check-input"
                 />
                 {labels.anonymous}
               </label>
-              <label className="flex items-center gap-3 text-sm">
+              <label className="flex cursor-pointer items-center gap-3 text-sm">
                 <input
                   type="checkbox"
                   checked={donor.receipt}
                   onChange={(event) => setDonor({ ...donor, receipt: event.target.checked })}
-                  className="size-5 accent-primary-600"
+                  className="check-input"
                 />
                 {labels.receipt}
               </label>

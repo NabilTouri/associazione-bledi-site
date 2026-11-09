@@ -40,7 +40,7 @@ export default async function HomePage() {
           <div>
             <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium ring-1 ring-white/20">
               <span aria-hidden className="size-2 rounded-full bg-accent-500" />
-              {dict.home.eyebrow}
+              {home?.eyebrow ?? dict.home.eyebrow}
             </p>
             <h1 className="mt-6 text-4xl leading-tight font-bold tracking-tight sm:text-6xl">{home?.heroTitle ?? dict.home.heroTitle}</h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-primary-100">{home?.heroSubtitle ?? dict.home.heroSubtitle}</p>
@@ -215,8 +215,8 @@ export default async function HomePage() {
         <Pattern className="text-white/[0.08]" />
         <Container className="relative flex flex-col items-start gap-6 py-16 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold">{dict.home.joinTitle}</h2>
-            <p className="mt-3 text-lg text-white/85">{dict.home.joinText}</p>
+            <h2 className="text-3xl font-bold">{home?.joinTitle ?? dict.home.joinTitle}</h2>
+            <p className="mt-3 text-lg text-white/85">{home?.joinText ?? dict.home.joinText}</p>
           </div>
           <div className="flex flex-wrap gap-3">
             <ButtonLink href={href(locale, routes.join)} variant="secondary">

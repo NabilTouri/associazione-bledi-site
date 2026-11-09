@@ -5,6 +5,7 @@ import type { Locale } from '@/i18n/config'
 import { sanityFetch } from './fetch'
 import {
   aboutPageQuery,
+  donatePageQuery,
   activitiesQuery,
   boardMembersQuery,
   eventBySlugQuery,
@@ -19,12 +20,14 @@ import {
   postsQuery,
   siteSettingsQuery,
   transparencyDocumentsQuery,
+  transparencyPageQuery,
   upcomingEventsQuery,
 } from './queries'
 import type {
   AboutPage,
   Activity,
   BoardMember,
+  DonatePage,
   EventDetail,
   EventSummary,
   GalleryAlbum,
@@ -35,6 +38,7 @@ import type {
   PostSummary,
   SiteSettings,
   TransparencyDocument,
+  TransparencyPage,
 } from './types'
 
 /**
@@ -50,6 +54,12 @@ export const getHomePage = (locale: Locale) =>
 
 export const getAboutPage = (locale: Locale) =>
   sanityFetch<AboutPage>({ query: aboutPageQuery, params: { locale }, tags: ['aboutPage'], revalidate: 'max' })
+
+export const getDonatePage = (locale: Locale) =>
+  sanityFetch<DonatePage>({ query: donatePageQuery, params: { locale }, tags: ['donatePage'], revalidate: 'max' })
+
+export const getTransparencyPage = (locale: Locale) =>
+  sanityFetch<TransparencyPage>({ query: transparencyPageQuery, params: { locale }, tags: ['transparencyPage'], revalidate: 'max' })
 
 export const getPosts = async (locale: Locale, limit = 50) =>
   (await sanityFetch<PostSummary[]>({ query: postsQuery, params: { locale, limit }, tags: ['post'], revalidate: 'max' })) ?? []

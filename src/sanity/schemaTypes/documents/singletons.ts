@@ -107,7 +107,14 @@ export const homePage = defineType({
   title: 'Home page',
   type: 'document',
   icon: House,
+  fieldsets: [{ name: 'join', title: 'Riquadro "Fai parte della comunità"', options: { collapsible: true, collapsed: false } }],
   fields: [
+    defineField({
+      name: 'eyebrow',
+      title: 'Etichetta sopra il titolo',
+      type: 'localeString',
+      description: 'Es. "Associazione culturale · Brescia"',
+    }),
     defineField({ name: 'heroTitle', title: 'Titolo principale', type: 'localeString' }),
     defineField({ name: 'heroSubtitle', title: 'Sottotitolo', type: 'localeText' }),
     imageField('heroImage', 'Immagine di copertina'),
@@ -129,6 +136,8 @@ export const homePage = defineType({
         }),
       ],
     }),
+    defineField({ name: 'joinTitle', title: 'Titolo', type: 'localeString', fieldset: 'join' }),
+    defineField({ name: 'joinText', title: 'Testo', type: 'localeText', fieldset: 'join' }),
   ],
   preview: { prepare: () => ({ title: 'Home page' }) },
 })

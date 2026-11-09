@@ -31,12 +31,38 @@ export interface SiteSettings {
 }
 
 export interface HomePage {
+  eyebrow: string | null
   heroTitle: string | null
   heroSubtitle: string | null
   heroImage: SanityImage | null
   aboutTitle: string | null
   aboutText: string | null
   pillars: { title: string; text: string }[] | null
+  joinTitle: string | null
+  joinText: string | null
+}
+
+export interface CardText {
+  title: string | null
+  text: string | null
+}
+
+export type ImpactAmount = '10' | '25' | '50' | '100'
+
+export interface DonatePage {
+  demoTitle: string | null
+  demoText: string | null
+  impact: Record<ImpactAmount, string | null>
+  bank: CardText
+  fiveXMille: CardText
+  tax: CardText
+  volunteer: CardText
+}
+
+export interface TransparencyPage {
+  runtsTitle: string | null
+  runtsText: string | null
+  planned: { label: string; done: boolean }[] | null
 }
 
 export interface AboutPage {
