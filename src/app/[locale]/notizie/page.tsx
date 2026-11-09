@@ -27,7 +27,7 @@ export default async function NewsPage() {
             ))}
           </div>
         ) : (
-          <p className="rounded-3xl bg-white p-10 text-center text-muted ring-1 ring-sand-200">{dict.news.empty}</p>
+          <p className="rounded-3xl bg-surface-raised p-10 text-center text-ink-muted ring-1 ring-border">{dict.news.empty}</p>
         )}
       </Section>
     </>

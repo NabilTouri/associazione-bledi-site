@@ -11,7 +11,7 @@ export type FormLabels = Dictionary['forms']
 export function FieldError({ id, error, labels }: { id: string; error?: keyof FormLabels; labels: FormLabels }) {
   if (!error) return null
   return (
-    <p id={id} className="mt-1.5 text-sm font-medium text-accent-600">
+    <p id={id} className="mt-1.5 text-sm font-medium text-accent-ink">
       {labels[error] ?? labels.error}
     </p>
   )
@@ -49,7 +49,7 @@ export function Field(props: InputProps | TextareaProps) {
       <label htmlFor={id} className="mb-1.5 block text-sm font-semibold text-ink">
         {label}
         {required && (
-          <span aria-hidden className="text-accent-500">
+          <span aria-hidden className="text-accent-ink">
             {' '}
             *
           </span>
@@ -107,7 +107,7 @@ export function ConsentCheckbox({
           <a href={privacyHref} className="underline underline-offset-2" target="_blank" rel="noopener noreferrer">
             {label}
           </a>
-          <span aria-hidden className="text-accent-500">
+          <span aria-hidden className="text-accent-ink">
             {' '}
             *
           </span>
@@ -120,18 +120,18 @@ export function ConsentCheckbox({
 
 export function SuccessMessage({ title, demoNote }: { title: string; demoNote?: string | null }) {
   return (
-    <div role="status" className="rounded-3xl bg-primary-50 p-8 text-center ring-1 ring-primary-200">
-      <CheckCircle2 aria-hidden className="mx-auto size-12 text-primary-600" />
-      <p className="mt-4 text-lg font-semibold text-primary-900">{title}</p>
-      {demoNote && <p className="mt-3 text-sm text-muted">{demoNote}</p>}
+    <div role="status" className="rounded-3xl bg-brand-soft p-8 text-center ring-1 ring-success-line">
+      <CheckCircle2 aria-hidden className="mx-auto size-12 text-brand" />
+      <p className="mt-4 text-lg font-semibold text-ink-heading">{title}</p>
+      {demoNote && <p className="mt-3 text-sm text-ink-muted">{demoNote}</p>}
     </div>
   )
 }
 
 export function FormCard({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="relative rounded-3xl bg-white p-6 shadow-sm ring-1 ring-sand-200 sm:p-8">
-      <h2 className="mb-6 text-2xl font-bold text-primary-900">{title}</h2>
+    <div className="relative rounded-3xl bg-surface-raised p-6 shadow-sm ring-1 ring-border sm:p-8">
+      <h2 className="mb-6 text-2xl font-bold text-ink-heading">{title}</h2>
       {children}
     </div>
   )

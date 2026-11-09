@@ -1,30 +1,103 @@
 @import 'tailwindcss';
 
 /*
- * Design tokens. Colours take inspiration from the Algerian flag (green, red)
- * on a warm sand background.
+ * Design tokens from the "Associazione Bledi" design system: green and red from the
+ * Algerian flag on a warm sand ground. Components use the semantic colours
+ * (surface, ink, brand, accent…); the palette steps are for illustration and print.
  */
 @theme {
-  --color-primary-50: #ecf8f1;
-  --color-primary-100: #d2efdf;
-  --color-primary-200: #a6dec0;
-  --color-primary-300: #72c79a;
-  --color-primary-500: #12804a;
-  --color-primary-600: #0c6b3c;
-  --color-primary-700: #0a5631;
-  --color-primary-800: #094428;
-  --color-primary-900: #07321e;
-
-  --color-accent-500: #d21034;
-  --color-accent-600: #b00d2b;
-
+  /* Palette (design system "Associazione Bledi"). Components use the semantic colours below. */
+  /* Bledi green — from the Algerian flag; 600 is the brand anchor */
+  --color-green-50: #edf7f1;
+  --color-green-100: #d2efdf;
+  --color-green-200: #a6dec0;
+  --color-green-300: #72c79a;
+  --color-green-400: #3aa36c;
+  --color-green-500: #12804a;
+  --color-green-600: #0c6b3c;
+  --color-green-700: #0a5631;
+  --color-green-800: #094428;
+  --color-green-900: #07321e;
+  --color-green-950: #04200f;
+  /* Bledi red — the flag red: giving (Donate) and the star in the logo */
+  --color-red-50: #fdeef1;
+  --color-red-100: #fbd5dc;
+  --color-red-200: #f5a9b7;
+  --color-red-300: #ee7489;
+  --color-red-400: #e2435e;
+  --color-red-500: #d21034;
+  --color-red-600: #b00d2b;
+  --color-red-700: #8e0b23;
+  --color-red-800: #6b0a1c;
+  --color-red-900: #480713;
+  /* Sand — the warm ground */
   --color-sand-50: #fcfaf6;
   --color-sand-100: #f6f1e7;
   --color-sand-200: #ece2cf;
   --color-sand-300: #dccbab;
+  --color-sand-400: #c3ab82;
+  --color-sand-500: #9a8360;
+  --color-sand-600: #76634a;
+  --color-sand-700: #584a38;
+  /* Saffron — zellige ochre: "coming soon", pinned */
+  --color-saffron-50: #fdf7e8;
+  --color-saffron-100: #faeac4;
+  --color-saffron-200: #f4d38a;
+  --color-saffron-300: #ebb84e;
+  --color-saffron-400: #dd9d27;
+  --color-saffron-500: #c07f14;
+  --color-saffron-600: #9a630f;
+  --color-saffron-700: #784c0e;
+  --color-saffron-800: #5a390d;
+  /* Tile blue — zellige blue: information */
+  --color-tile-50: #ecf4f8;
+  --color-tile-100: #d3e6ef;
+  --color-tile-200: #a7cddf;
+  --color-tile-300: #6eaac6;
+  --color-tile-400: #3d87a8;
+  --color-tile-500: #226a8b;
+  --color-tile-600: #1a5571;
+  --color-tile-700: #15445b;
+  --color-tile-800: #103446;
 
+  /* Semantic colours: use these in components. */
+  --color-surface: var(--color-sand-50);
+  --color-surface-raised: #ffffff;
+  --color-surface-alt: var(--color-sand-100);
+  --color-surface-sunken: var(--color-sand-200);
+  --color-surface-brand: var(--color-green-800);
+  --color-surface-deep: var(--color-green-900);
   --color-ink: #1c1917;
-  --color-muted: #57534e;
+  --color-ink-muted: #57534e;
+  --color-ink-heading: var(--color-green-900);
+  --color-ink-link: var(--color-green-700);
+  --color-on-brand: #ffffff;
+  --color-on-brand-muted: var(--color-green-100);
+  --color-brand: var(--color-green-600);
+  --color-brand-strong: var(--color-green-700);
+  --color-brand-soft: var(--color-green-50);
+  --color-brand-soft-ink: var(--color-green-700);
+  --color-accent: var(--color-red-500);
+  --color-accent-strong: var(--color-red-600);
+  --color-on-accent: #ffffff;
+  --color-accent-soft: var(--color-red-50);
+  --color-accent-ink: var(--color-red-600);
+  --color-border: var(--color-sand-200);
+  --color-border-control: var(--color-sand-500);
+  --color-focus-ring: var(--color-green-500);
+  --color-focus-ring-inverse: #ffffff;
+  --color-info-soft: var(--color-tile-50);
+  --color-info-ink: var(--color-tile-700);
+  --color-info-line: var(--color-tile-200);
+  --color-warning-soft: var(--color-saffron-50);
+  --color-warning-ink: var(--color-saffron-700);
+  --color-warning-line: var(--color-saffron-200);
+  --color-danger-soft: var(--color-red-50);
+  --color-danger-ink: var(--color-red-700);
+  --color-danger-line: var(--color-red-200);
+  --color-success-soft: var(--color-green-50);
+  --color-success-ink: var(--color-green-700);
+  --color-success-line: var(--color-green-200);
 
   --font-sans: var(--font-latin), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-display-latin), var(--font-arabic), ui-serif, Georgia, serif;
@@ -65,7 +138,7 @@
   }
 
   body {
-    background-color: var(--color-sand-50);
+    background-color: var(--color-surface);
     color: var(--color-ink);
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
@@ -103,8 +176,8 @@
   }
 
   ::selection {
-    background-color: var(--color-primary-100);
-    color: var(--color-primary-900);
+    background-color: var(--color-green-100);
+    color: var(--color-green-900);
   }
 
   a,
@@ -117,9 +190,15 @@
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-primary-500);
+    outline: 3px solid var(--color-focus-ring);
     outline-offset: 2px;
     border-radius: 4px;
+  }
+
+  /* On green bands (hero, footer) the ring turns white to stay visible. */
+  .on-brand :focus-visible,
+  .on-brand:focus-visible {
+    outline-color: var(--color-focus-ring-inverse);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -147,15 +226,17 @@
   .prose-content h2 {
     font-size: 1.6rem;
     font-weight: 700;
+    color: var(--color-ink-heading);
     margin-top: 2em;
   }
   .prose-content h3 {
     font-size: 1.25rem;
     font-weight: 700;
+    color: var(--color-ink-heading);
     margin-top: 1.6em;
   }
   .prose-content a {
-    color: var(--color-primary-700);
+    color: var(--color-ink-link);
     text-decoration: underline;
     text-underline-offset: 3px;
   }
@@ -168,17 +249,18 @@
     padding-inline-start: 1.5rem;
   }
   .prose-content blockquote {
-    border-inline-start: 4px solid var(--color-primary-500);
+    border-inline-start: 4px solid var(--color-brand);
     padding-inline-start: 1rem;
     font-style: italic;
-    color: var(--color-muted);
+    color: var(--color-ink-muted);
   }
 
   .field-input {
     width: 100%;
     border-radius: 0.75rem;
-    border: 1px solid var(--color-sand-300);
-    background: white;
+    border: 1px solid var(--color-border-control);
+    background: var(--color-surface-raised);
+    color: var(--color-ink);
     padding: 0.7rem 0.9rem;
     font-size: 1rem;
     transition:
@@ -187,19 +269,21 @@
   }
   .field-input:focus {
     outline: none;
-    border-color: var(--color-primary-500);
-    box-shadow: 0 0 0 3px var(--color-primary-100);
+    border-color: var(--color-brand);
+    box-shadow:
+      0 0 0 3px var(--color-brand-soft),
+      0 0 0 4px var(--color-focus-ring);
   }
   .field-input[aria-invalid='true'] {
-    border-color: var(--color-accent-500);
+    border-color: var(--color-accent-ink);
   }
   .field-input::placeholder {
-    color: color-mix(in oklab, var(--color-muted) 55%, transparent);
+    color: color-mix(in oklab, var(--color-ink-muted) 75%, transparent);
   }
   /* Keep the site colours when the browser autofills a field. */
   .field-input:-webkit-autofill {
     -webkit-text-fill-color: var(--color-ink);
-    box-shadow: 0 0 0 1000px white inset;
+    box-shadow: 0 0 0 1000px var(--color-surface-raised) inset;
   }
   textarea.field-input {
     resize: vertical;
@@ -216,8 +300,8 @@
     width: 1.25rem;
     height: 1.25rem;
     margin: 0;
-    border: 1.5px solid var(--color-sand-300);
-    background-color: white;
+    border: 1.5px solid var(--color-border-control);
+    background-color: var(--color-surface-raised);
     cursor: pointer;
     transition:
       background-color 150ms,
@@ -239,31 +323,31 @@
   .check-input::before {
     width: 0.7rem;
     height: 0.7rem;
-    background-color: white;
+    background-color: var(--color-on-brand);
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
   }
   .radio-input::before {
     width: 0.55rem;
     height: 0.55rem;
     border-radius: 9999px;
-    background-color: var(--color-primary-600);
+    background-color: var(--color-brand);
   }
   .check-input:hover,
   .radio-input:hover {
-    border-color: var(--color-primary-500);
+    border-color: var(--color-brand);
   }
   .check-input:checked {
-    background-color: var(--color-primary-600);
-    border-color: var(--color-primary-600);
+    background-color: var(--color-brand);
+    border-color: var(--color-brand);
   }
   .radio-input:checked {
-    border-color: var(--color-primary-600);
+    border-color: var(--color-brand);
   }
   .check-input:checked::before,
   .radio-input:checked::before {
     transform: scale(1);
   }
   .check-input[aria-invalid='true'] {
-    border-color: var(--color-accent-500);
+    border-color: var(--color-accent-ink);
   }
 }

@@ -27,11 +27,11 @@ export default async function EventsPage() {
             ))}
           </div>
         ) : (
-          <p className="rounded-3xl bg-white p-10 text-center text-muted ring-1 ring-sand-200">{dict.events.empty}</p>
+          <p className="rounded-3xl bg-surface-raised p-10 text-center text-ink-muted ring-1 ring-border">{dict.events.empty}</p>
         )}
       </Section>
       {past.length > 0 && (
-        <Section id="past" title={dict.events.past} className="bg-white">
+        <Section id="past" title={dict.events.past} className="bg-surface-raised">
           <div className="grid gap-6 opacity-90 sm:grid-cols-2 lg:grid-cols-3">
             {past.map((event) => (
               <EventCard key={event._id} event={event} locale={locale} freeLabel={dict.common.free} />

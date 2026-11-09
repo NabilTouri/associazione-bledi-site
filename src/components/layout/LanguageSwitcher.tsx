@@ -110,16 +110,16 @@ export function LanguageSwitcher({ locale, label }: { locale: Locale; label: str
         onClick={() => (open ? close() : openAt(locales.indexOf(locale)))}
         onKeyDown={onButtonKeyDown}
         data-testid="language-switcher"
-        className={`inline-flex h-10 items-center gap-1.5 rounded-full border bg-white ps-3 pe-2.5 text-sm font-medium text-ink transition-colors hover:border-primary-500 ${
-          open ? 'border-primary-500 ring-3 ring-primary-100' : 'border-sand-300'
+        className={`inline-flex h-10 items-center gap-1.5 rounded-full border bg-surface-raised ps-3 pe-2.5 text-sm font-medium text-ink transition-colors hover:border-brand ${
+          open ? 'border-brand ring-3 ring-brand-soft' : 'border-border-control'
         }`}
       >
-        <Languages aria-hidden className="size-4 text-primary-700" />
+        <Languages aria-hidden className="size-4 text-ink-link" />
         <span className="hidden sm:inline" lang={locale}>
           {localeNames[locale]}
         </span>
         <span className="font-semibold uppercase sm:hidden">{locale}</span>
-        <ChevronDown aria-hidden className={`size-4 text-muted transition-transform ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown aria-hidden className={`size-4 text-ink-muted transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
 
       {open && (
@@ -132,7 +132,7 @@ export function LanguageSwitcher({ locale, label }: { locale: Locale; label: str
           aria-activedescendant={optionId(active)}
           onKeyDown={onListKeyDown}
           data-testid="language-menu"
-          className="absolute end-0 top-full z-50 mt-2 w-52 origin-top animate-pop-in overflow-hidden rounded-2xl bg-white p-1.5 shadow-xl ring-1 shadow-ink/10 ring-sand-200 focus:outline-none"
+          className="absolute end-0 top-full z-50 mt-2 w-52 origin-top animate-pop-in overflow-hidden rounded-2xl bg-surface-raised p-1.5 shadow-xl ring-1 shadow-ink/10 ring-border focus:outline-none"
         >
           {locales.map((value, index) => {
             const selected = value === locale
@@ -146,21 +146,21 @@ export function LanguageSwitcher({ locale, label }: { locale: Locale; label: str
                 onClick={() => choose(value)}
                 onPointerMove={() => setActive(index)}
                 className={`flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-xl px-3 py-2 text-sm ${
-                  index === active ? 'bg-sand-100' : ''
-                } ${selected ? 'font-semibold text-primary-800' : 'text-ink'}`}
+                  index === active ? 'bg-surface-alt' : ''
+                } ${selected ? 'font-semibold text-brand-soft-ink' : 'text-ink'}`}
               >
                 <span className="flex items-center gap-3">
                   <span
                     aria-hidden
                     className={`flex h-6 w-8 items-center justify-center rounded-md text-[11px] font-bold uppercase ${
-                      selected ? 'bg-primary-600 text-white' : 'bg-sand-100 text-muted'
+                      selected ? 'bg-brand text-on-brand' : 'bg-surface-alt text-ink-muted'
                     }`}
                   >
                     {value}
                   </span>
                   {localeNames[value]}
                 </span>
-                {selected && <Check aria-hidden className="size-4 text-primary-600" />}
+                {selected && <Check aria-hidden className="size-4 text-brand" />}
               </li>
             )
           })}

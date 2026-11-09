@@ -30,15 +30,15 @@ export default async function JoinPage() {
       <Container className="grid gap-10 py-14 lg:grid-cols-[1fr_1.4fr]">
         <div className="space-y-5">
           {roles.map(({ icon: Icon, title, text }) => (
-            <div key={title} className="rounded-3xl bg-white p-6 ring-1 ring-sand-200">
-              <span className="flex size-12 items-center justify-center rounded-2xl bg-primary-600 text-white">
+            <div key={title} className="rounded-3xl bg-surface-raised p-6 ring-1 ring-border">
+              <span className="flex size-12 items-center justify-center rounded-2xl bg-brand text-on-brand">
                 <Icon aria-hidden className="size-6" />
               </span>
-              <h2 className="mt-4 text-xl font-bold text-primary-900">{title}</h2>
-              <p className="mt-2 leading-relaxed text-muted">{text}</p>
+              <h2 className="mt-4 text-xl font-bold text-ink-heading">{title}</h2>
+              <p className="mt-2 leading-relaxed text-ink-muted">{text}</p>
             </div>
           ))}
-          <p className="rounded-2xl bg-sand-100 p-4 text-sm text-muted">
+          <p className="rounded-2xl bg-surface-alt p-4 text-sm text-ink-muted">
             {settings.membershipFee ? `${dict.join.feeLabel}: ${formatCurrency(settings.membershipFee, locale)}` : dict.join.feeNote}
           </p>
         </div>

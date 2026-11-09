@@ -69,17 +69,17 @@ export default async function EventPage({ params }: PageProps<'/[locale]/eventi/
   return (
     <article className="pb-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
-      <header className="border-b border-sand-200 bg-sand-100">
+      <header className="border-b border-border bg-surface-alt">
         <Container className="py-12 sm:py-16">
           <Link
             href={href(locale, routes.events)}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary-700 hover:text-primary-900"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-ink-link hover:text-ink-heading"
           >
             <ArrowLeft aria-hidden className="size-4 rtl:rotate-180" />
             {dict.events.title}
           </Link>
-          <h1 className="mt-6 max-w-3xl text-4xl font-bold tracking-tight text-primary-900 sm:text-5xl">{event.title}</h1>
-          {event.excerpt && <p className="mt-4 max-w-2xl text-xl leading-relaxed text-muted">{event.excerpt}</p>}
+          <h1 className="mt-6 max-w-3xl text-4xl font-bold tracking-tight text-ink-heading sm:text-5xl">{event.title}</h1>
+          {event.excerpt && <p className="mt-4 max-w-2xl text-xl leading-relaxed text-ink-muted">{event.excerpt}</p>}
         </Container>
       </header>
 
@@ -100,19 +100,19 @@ export default async function EventPage({ params }: PageProps<'/[locale]/eventi/
           </div>
         </div>
 
-        <aside className="h-fit space-y-5 rounded-3xl bg-white p-6 ring-1 ring-sand-200 lg:sticky lg:top-28">
+        <aside className="h-fit space-y-5 rounded-3xl bg-surface-raised p-6 ring-1 ring-border lg:sticky lg:top-28">
           <div className="flex gap-3">
-            <CalendarDays aria-hidden className="mt-0.5 size-5 shrink-0 text-primary-600" />
+            <CalendarDays aria-hidden className="mt-0.5 size-5 shrink-0 text-brand" />
             <div>
-              <p className="text-sm font-semibold text-muted">{dict.common.when}</p>
+              <p className="text-sm font-semibold text-ink-muted">{dict.common.when}</p>
               <p className="font-medium">{formatEventRange(event.start, event.end, locale)}</p>
             </div>
           </div>
           {place && (
             <div className="flex gap-3">
-              <MapPin aria-hidden className="mt-0.5 size-5 shrink-0 text-primary-600" />
+              <MapPin aria-hidden className="mt-0.5 size-5 shrink-0 text-brand" />
               <div>
-                <p className="text-sm font-semibold text-muted">{dict.common.where}</p>
+                <p className="text-sm font-semibold text-ink-muted">{dict.common.where}</p>
                 <a
                   href={mapsUrl(place)}
                   target="_blank"
@@ -126,7 +126,7 @@ export default async function EventPage({ params }: PageProps<'/[locale]/eventi/
           )}
           {event.isFree && (
             <div className="flex gap-3">
-              <Ticket aria-hidden className="mt-0.5 size-5 shrink-0 text-primary-600" />
+              <Ticket aria-hidden className="mt-0.5 size-5 shrink-0 text-brand" />
               <p className="font-medium">{dict.common.free}</p>
             </div>
           )}
@@ -136,8 +136,8 @@ export default async function EventPage({ params }: PageProps<'/[locale]/eventi/
               <ExternalLink aria-hidden className="size-4" />
             </a>
           )}
-          <div className="space-y-2 border-t border-sand-200 pt-5">
-            <p className="text-sm font-semibold text-muted">{dict.common.addToCalendar}</p>
+          <div className="space-y-2 border-t border-border pt-5">
+            <p className="text-sm font-semibold text-ink-muted">{dict.common.addToCalendar}</p>
             <a
               href={googleCalendarUrl(calendarEvent)}
               target="_blank"

@@ -36,11 +36,11 @@ export default async function AboutPage() {
         <div className="grid gap-12 lg:grid-cols-2">
           <div className="space-y-10">
             <div>
-              <h2 className="text-3xl font-bold text-primary-900">{dict.about.missionTitle}</h2>
+              <h2 className="text-3xl font-bold text-ink-heading">{dict.about.missionTitle}</h2>
               <p className="mt-4 text-lg leading-relaxed text-ink/90">{about?.mission ?? dict.about.mission}</p>
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-primary-900">{dict.about.storyTitle}</h2>
+              <h2 className="text-3xl font-bold text-ink-heading">{dict.about.storyTitle}</h2>
               <div className="mt-4 text-lg">
                 {about?.story?.length ? (
                   <RichText value={about.story} />
@@ -62,12 +62,12 @@ export default async function AboutPage() {
         </div>
       </Section>
 
-      <Section title={dict.about.valuesTitle} className="bg-white">
+      <Section title={dict.about.valuesTitle} className="bg-surface-raised">
         <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {values.map((value) => (
-            <li key={value.title} className="rounded-3xl border-t-4 border-primary-600 bg-sand-50 p-6 ring-1 ring-sand-200">
-              <h3 className="text-xl font-bold text-primary-900">{value.title}</h3>
-              <p className="mt-2 text-muted">{value.text}</p>
+            <li key={value.title} className="rounded-3xl border-t-4 border-brand bg-surface p-6 ring-1 ring-border">
+              <h3 className="text-xl font-bold text-ink-heading">{value.title}</h3>
+              <p className="mt-2 text-ink-muted">{value.text}</p>
             </li>
           ))}
         </ul>
@@ -77,7 +77,7 @@ export default async function AboutPage() {
         {board.length ? (
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {board.map((member) => (
-              <li key={member._id} className="rounded-3xl bg-white p-6 text-center ring-1 ring-sand-200">
+              <li key={member._id} className="rounded-3xl bg-surface-raised p-6 text-center ring-1 ring-border">
                 {member.photo?.asset ? (
                   <SanityImage
                     image={member.photo}
@@ -88,17 +88,17 @@ export default async function AboutPage() {
                     className="mx-auto size-28 rounded-full object-cover"
                   />
                 ) : (
-                  <span className="mx-auto flex size-28 items-center justify-center rounded-full bg-primary-50 text-primary-600">
+                  <span className="mx-auto flex size-28 items-center justify-center rounded-full bg-brand-soft text-brand">
                     <UserRound aria-hidden className="size-12" />
                   </span>
                 )}
-                <p className="mt-4 text-lg font-bold text-primary-900">{member.name}</p>
-                {member.role && <p className="text-muted">{member.role}</p>}
+                <p className="mt-4 text-lg font-bold text-ink-heading">{member.name}</p>
+                {member.role && <p className="text-ink-muted">{member.role}</p>}
               </li>
             ))}
           </ul>
         ) : (
-          <p className="rounded-3xl bg-white p-8 text-center text-muted ring-1 ring-sand-200">{dict.about.boardEmpty}</p>
+          <p className="rounded-3xl bg-surface-raised p-8 text-center text-ink-muted ring-1 ring-border">{dict.about.boardEmpty}</p>
         )}
       </Section>
     </>

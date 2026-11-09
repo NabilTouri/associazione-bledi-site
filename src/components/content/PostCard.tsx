@@ -13,12 +13,12 @@ export function PostCard({ post, locale, labels }: { post: PostSummary; locale: 
   const isAnnouncement = post.kind === 'announcement'
   return (
     <article
-      className={`group relative flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 transition hover:-translate-y-0.5 hover:shadow-md ${
-        isAnnouncement ? 'ring-accent-500/30' : 'ring-sand-200'
+      className={`group relative flex flex-col overflow-hidden rounded-3xl bg-surface-raised shadow-sm ring-1 transition hover:-translate-y-0.5 hover:shadow-md ${
+        isAnnouncement ? 'ring-danger-line' : 'ring-border'
       }`}
     >
       {post.cover?.asset && (
-        <div className="aspect-[16/9] bg-sand-100">
+        <div className="aspect-[16/9] bg-surface-alt">
           <SanityImage
             image={post.cover}
             width={800}
@@ -32,28 +32,28 @@ export function PostCard({ post, locale, labels }: { post: PostSummary; locale: 
         <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
           <span
             className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 ${
-              isAnnouncement ? 'bg-accent-500/10 text-accent-600' : 'bg-primary-50 text-primary-700'
+              isAnnouncement ? 'bg-accent/10 text-accent-ink' : 'bg-brand-soft text-ink-link'
             }`}
           >
             {isAnnouncement ? <Megaphone aria-hidden className="size-3.5" /> : <Newspaper aria-hidden className="size-3.5" />}
             {isAnnouncement ? labels.announcement : labels.news}
           </span>
           {post.pinned && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2.5 py-1 text-amber-800">
+            <span className="inline-flex items-center gap-1 rounded-full bg-warning-soft px-2.5 py-1 text-warning-ink">
               <Pin aria-hidden className="size-3.5" />
               {labels.pinned}
             </span>
           )}
-          <time dateTime={post.publishedAt} className="text-muted">
+          <time dateTime={post.publishedAt} className="text-ink-muted">
             {formatDate(post.publishedAt, locale)}
           </time>
         </div>
-        <h3 className="text-xl font-bold text-primary-900">
+        <h3 className="text-xl font-bold text-ink-heading">
           <Link href={href(locale, `/notizie/${post.slug}`)} className="after:absolute after:inset-0">
             {post.title}
           </Link>
         </h3>
-        {post.excerpt && <p className="line-clamp-3 text-muted">{post.excerpt}</p>}
+        {post.excerpt && <p className="line-clamp-3 text-ink-muted">{post.excerpt}</p>}
       </div>
     </article>
   )
