@@ -1,0 +1,327 @@
+{
+  "meta": {
+    "siteName": "Associazione Bledi",
+    "tagline": "La comunità algerina di Brescia",
+    "description": "Associazione Bledi riunisce la comunità algerina di Brescia: cultura, solidarietà, eventi e supporto per famiglie e giovani."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "Chi siamo",
+    "news": "Notizie",
+    "events": "Eventi",
+    "activities": "Attività",
+    "gallery": "Galleria",
+    "donate": "Dona",
+    "join": "Associati",
+    "transparency": "Trasparenza",
+    "contact": "Contatti",
+    "privacy": "Privacy",
+    "menu": "Menu",
+    "close": "Chiudi",
+    "language": "Lingua",
+    "skipToContent": "Vai al contenuto"
+  },
+  "common": {
+    "readMore": "Leggi di più",
+    "learnMore": "Scopri di più",
+    "back": "Indietro",
+    "allNews": "Tutte le notizie",
+    "allEvents": "Tutti gli eventi",
+    "comingSoon": "In arrivo",
+    "notAvailableYet": "Non ancora disponibile",
+    "demo": "Demo",
+    "publishedOn": "Pubblicato il",
+    "when": "Quando",
+    "where": "Dove",
+    "free": "Gratuito",
+    "addToCalendar": "Aggiungi al calendario",
+    "googleCalendar": "Google Calendar",
+    "downloadIcs": "Scarica .ics",
+    "register": "Iscriviti all'evento",
+    "placeholderNotice": "Contenuto di esempio: i testi definitivi verranno inseriti dalla redazione tramite il CMS.",
+    "loading": "Caricamento…",
+    "photos": "foto"
+  },
+  "home": {
+    "eyebrow": "Associazione culturale · Brescia",
+    "heroTitle": "Bledi, il nostro paese. Brescia, la nostra casa.",
+    "heroSubtitle": "Siamo l'associazione della comunità algerina di Brescia: creiamo occasioni di incontro, sosteniamo le famiglie e costruiamo ponti tra la cultura algerina e quella italiana.",
+    "ctaDonate": "Sostienici",
+    "ctaJoin": "Diventa socio",
+    "ctaEvents": "Prossimi eventi",
+    "aboutTitle": "Cos'è Bledi",
+    "aboutText": "\"Bledi\" in darija algerino significa \"il mio paese\". L'associazione nasce per tenere vivo il legame con le nostre radici e, allo stesso tempo, partecipare attivamente alla vita della città che ci accoglie.",
+    "howTitle": "Come operiamo",
+    "pillars": [
+      {
+        "title": "Comunità",
+        "text": "Momenti di incontro, feste tradizionali e ricorrenze per famiglie, giovani e anziani."
+      },
+      {
+        "title": "Cultura",
+        "text": "Promozione della lingua, della musica, della cucina e della storia algerina, aperta a tutta la città."
+      },
+      {
+        "title": "Solidarietà",
+        "text": "Raccolte e iniziative di aiuto per chi è in difficoltà, qui a Brescia e in Algeria."
+      },
+      {
+        "title": "Orientamento",
+        "text": "Informazioni e accompagnamento su pratiche, servizi e opportunità per i nuovi arrivati."
+      }
+    ],
+    "upcomingEvents": "Prossimi eventi",
+    "latestNews": "Notizie e annunci",
+    "noEvents": "Nessun evento in programma al momento. Torna a trovarci presto!",
+    "noNews": "Nessuna notizia pubblicata per ora.",
+    "whereTitle": "Dove siamo",
+    "whereText": "Ci trovi a Brescia. Scrivici prima di passare, così possiamo accoglierti al meglio.",
+    "openMap": "Apri in mappe",
+    "joinTitle": "Fai parte della comunità",
+    "joinText": "Diventa socio o volontario: ogni contributo, piccolo o grande, rende possibile ciò che facciamo."
+  },
+  "about": {
+    "title": "Chi siamo",
+    "intro": "Un'associazione nata dalla comunità, per la comunità.",
+    "missionTitle": "La nostra missione",
+    "mission": "Valorizzare la cultura algerina a Brescia, favorire l'integrazione e la partecipazione civica, e offrire sostegno concreto alle famiglie della comunità.",
+    "storyTitle": "La nostra storia",
+    "story": "L'associazione nasce dall'iniziativa di un gruppo di algerini residenti a Brescia che desideravano un punto di riferimento comune. La storia completa verrà raccontata qui a breve.",
+    "valuesTitle": "I nostri valori",
+    "values": [
+      { "title": "Accoglienza", "text": "Le nostre porte sono aperte a tutti, algerini e non." },
+      { "title": "Trasparenza", "text": "Rendiamo conto di come usiamo ogni contributo." },
+      { "title": "Partecipazione", "text": "Le decisioni si prendono insieme, in assemblea." },
+      { "title": "Rispetto", "text": "Per le persone, le culture e le idee di ciascuno." }
+    ],
+    "boardTitle": "Il direttivo",
+    "boardEmpty": "La composizione del direttivo verrà pubblicata a breve."
+  },
+  "news": {
+    "title": "Notizie e annunci",
+    "intro": "Aggiornamenti dalla vita dell'associazione e comunicazioni importanti per la comunità.",
+    "announcement": "Annuncio",
+    "news": "Notizia",
+    "pinned": "In evidenza",
+    "empty": "Non ci sono ancora notizie pubblicate."
+  },
+  "events": {
+    "title": "Eventi",
+    "intro": "Feste, incontri, serate culturali e iniziative aperte a tutti.",
+    "upcoming": "In programma",
+    "past": "Eventi passati",
+    "empty": "Nessun evento in programma al momento.",
+    "emptyPast": "Nessun evento passato da mostrare."
+  },
+  "activities": {
+    "title": "Attività e servizi",
+    "intro": "Le attività che vorremmo offrire alla comunità.",
+    "noticeTitle": "Attività non ancora attive",
+    "notice": "Le attività qui sotto sono in fase di progettazione e non sono ancora disponibili. Le pubblichiamo per trasparenza e per raccogliere interesse: se vuoi partecipare o dare una mano, scrivici.",
+    "status": {
+      "planned": "In progettazione",
+      "active": "Attiva",
+      "paused": "Sospesa"
+    },
+    "items": [
+      {
+        "title": "Corso di lingua araba per bambini",
+        "text": "Lezioni settimanali di arabo per i più piccoli, per mantenere il legame con la lingua di famiglia.",
+        "category": "Corsi"
+      },
+      {
+        "title": "Italiano per nuovi arrivati",
+        "text": "Supporto linguistico per adulti appena arrivati a Brescia, in collaborazione con realtà del territorio.",
+        "category": "Corsi"
+      },
+      {
+        "title": "Sportello informativo",
+        "text": "Orientamento su documenti, servizi consolari e pratiche amministrative.",
+        "category": "Servizi"
+      },
+      {
+        "title": "Spazio giovani",
+        "text": "Incontri, sport e attività per ragazze e ragazzi di seconda generazione.",
+        "category": "Giovani"
+      }
+    ],
+    "proposeTitle": "Hai un'idea?",
+    "proposeText": "Proponi un'attività o rendi disponibile il tuo tempo come volontario."
+  },
+  "gallery": {
+    "title": "Galleria",
+    "intro": "Momenti della nostra comunità.",
+    "empty": "Le prime foto verranno pubblicate dopo i prossimi eventi."
+  },
+  "donate": {
+    "title": "Sostieni l'associazione",
+    "intro": "Con una donazione, singola o mensile, ci aiuti a organizzare eventi, attività per i giovani e iniziative di solidarietà.",
+    "demoTitle": "Modalità dimostrativa",
+    "demoBanner": "I pagamenti online non sono ancora attivi. Puoi provare tutto il percorso di donazione, ma nessun importo verrà addebitato e nessun dato verrà salvato.",
+    "steps": {
+      "amount": "Importo",
+      "details": "I tuoi dati",
+      "payment": "Pagamento",
+      "done": "Fatto"
+    },
+    "frequency": "Frequenza",
+    "oneTime": "Una tantum",
+    "monthly": "Mensile",
+    "amount": "Importo",
+    "customAmount": "Altro importo",
+    "perMonth": "/mese",
+    "impact": {
+      "10": "Contribuisci al materiale per le attività dei bambini.",
+      "25": "Sostieni una serata culturale aperta alla città.",
+      "50": "Aiuti una famiglia in difficoltà con la spesa del mese.",
+      "100": "Rendi possibile una festa della comunità."
+    },
+    "detailsTitle": "I tuoi dati",
+    "firstName": "Nome",
+    "lastName": "Cognome",
+    "email": "Email",
+    "anonymous": "Preferisco che la mia donazione resti anonima",
+    "message": "Messaggio (facoltativo)",
+    "receipt": "Desidero ricevere una ricevuta via email",
+    "paymentTitle": "Pagamento",
+    "cardHolder": "Titolare della carta",
+    "cardNumber": "Numero della carta",
+    "expiry": "Scadenza (MM/AA)",
+    "cvc": "CVC",
+    "demoCardHint": "Demo: usa 4242 4242 4242 4242, una data futura e un CVC qualsiasi.",
+    "secure": "I pagamenti saranno gestiti da un fornitore certificato PCI-DSS: i dati della carta non passeranno mai dai nostri server.",
+    "summary": "Riepilogo",
+    "total": "Totale",
+    "continue": "Continua",
+    "back": "Indietro",
+    "pay": "Dona",
+    "processing": "Elaborazione…",
+    "successTitle": "Grazie di cuore!",
+    "successText": "Questa era una simulazione: nessun pagamento è stato effettuato. Quando i pagamenti saranno attivi riceverai una conferma via email.",
+    "successMonthly": "Con una donazione mensile potrai modificare o annullare il contributo in qualsiasi momento.",
+    "reference": "Codice di riferimento (demo)",
+    "startOver": "Fai un'altra prova",
+    "otherWaysTitle": "Altri modi per sostenerci",
+    "bankTitle": "Bonifico bancario",
+    "bankText": "Le coordinate bancarie dell'associazione verranno pubblicate a breve.",
+    "fiveTitle": "5×1000",
+    "fiveText": "Potrai destinarci il tuo 5×1000 dopo l'iscrizione dell'associazione al RUNTS (Registro Unico Nazionale del Terzo Settore), prevista in futuro.",
+    "taxTitle": "Detraibilità fiscale",
+    "taxText": "Le donazioni diventeranno fiscalmente detraibili o deducibili dopo l'iscrizione al RUNTS. Fino ad allora non è possibile rilasciare ricevute valide ai fini fiscali.",
+    "volunteerTitle": "Dona il tuo tempo",
+    "volunteerText": "Anche qualche ora al mese come volontario fa la differenza."
+  },
+  "join": {
+    "title": "Associati",
+    "intro": "Diventa socio o volontario e partecipa alla vita dell'associazione.",
+    "memberTitle": "Socio",
+    "memberText": "I soci partecipano alle assemblee, votano le decisioni importanti e sostengono l'associazione con la quota annuale.",
+    "volunteerTitle": "Volontario",
+    "volunteerText": "I volontari danno una mano nell'organizzazione di eventi, attività e iniziative di solidarietà.",
+    "feeLabel": "Quota associativa annuale",
+    "feeNote": "La quota associativa annuale verrà comunicata dal direttivo.",
+    "formTitle": "Richiesta di adesione",
+    "type": "Voglio diventare",
+    "typeMember": "Socio",
+    "typeVolunteer": "Volontario",
+    "typeBoth": "Socio e volontario",
+    "firstName": "Nome",
+    "lastName": "Cognome",
+    "email": "Email",
+    "phone": "Telefono",
+    "city": "Comune di residenza",
+    "notes": "Raccontaci qualcosa di te (facoltativo)",
+    "submit": "Invia richiesta",
+    "success": "Richiesta inviata! Ti contatteremo al più presto per completare l'adesione."
+  },
+  "contact": {
+    "title": "Contatti",
+    "intro": "Hai domande, proposte o vuoi collaborare con noi? Scrivici.",
+    "formTitle": "Scrivici",
+    "name": "Nome e cognome",
+    "email": "Email",
+    "subject": "Oggetto",
+    "message": "Messaggio",
+    "submit": "Invia messaggio",
+    "success": "Messaggio inviato! Ti risponderemo il prima possibile.",
+    "addressTitle": "Indirizzo",
+    "emailTitle": "Email",
+    "phoneTitle": "Telefono",
+    "followUs": "Seguici"
+  },
+  "transparency": {
+    "title": "Trasparenza",
+    "intro": "Crediamo che chi ci sostiene abbia il diritto di sapere come lavoriamo e come vengono usate le risorse.",
+    "runtsTitle": "Iscrizione al RUNTS non ancora effettuata",
+    "runtsText": "L'associazione non è ancora iscritta al Registro Unico Nazionale del Terzo Settore. L'iscrizione è prevista in futuro: quando sarà completata pubblicheremo qui numero di iscrizione, codice fiscale per il 5×1000, bilanci e rendiconti.",
+    "documentsTitle": "Documenti",
+    "documentsEmpty": "Statuto, atto costitutivo e rendiconti verranno pubblicati qui.",
+    "docTypes": {
+      "statute": "Statuto",
+      "deed": "Atto costitutivo",
+      "budget": "Bilancio / rendiconto",
+      "report": "Relazione attività",
+      "other": "Documento"
+    },
+    "download": "Scarica",
+    "plannedTitle": "Cosa pubblicheremo",
+    "planned": [
+      "Statuto e atto costitutivo",
+      "Bilancio o rendiconto annuale",
+      "Relazione sulle attività svolte",
+      "Contributi pubblici ricevuti",
+      "Rendiconto del 5×1000 (dopo l'iscrizione al RUNTS)"
+    ]
+  },
+  "prayer": {
+    "title": "Orari di preghiera",
+    "subtitle": "Calcolati automaticamente per oggi.",
+    "brescia": "Brescia",
+    "algiers": "Algeri",
+    "fajr": "Fajr",
+    "sunrise": "Alba",
+    "dhuhr": "Dhuhr",
+    "asr": "Asr",
+    "maghrib": "Maghrib",
+    "isha": "Isha",
+    "next": "Prossima",
+    "timeInAlgeria": "Ora in Algeria",
+    "timeInItaly": "Ora in Italia",
+    "disclaimer": "Orari calcolati in modo astronomico e indicativi: possono differire di qualche minuto da quelli della moschea di riferimento."
+  },
+  "forms": {
+    "required": "Campo obbligatorio",
+    "invalidEmail": "Indirizzo email non valido",
+    "tooShort": "Testo troppo breve",
+    "invalidAmount": "Inserisci un importo tra 1 e 10.000 €",
+    "invalidCard": "Numero di carta non valido",
+    "invalidExpiry": "Data di scadenza non valida",
+    "invalidCvc": "CVC non valido",
+    "consent": "Ho letto l'informativa sulla privacy e acconsento al trattamento dei dati",
+    "consentRequired": "Devi accettare l'informativa sulla privacy",
+    "sending": "Invio in corso…",
+    "error": "Si è verificato un errore. Riprova più tardi.",
+    "demoNote": "Modalità demo: il CMS non è ancora collegato, quindi la richiesta non è stata salvata."
+  },
+  "footer": {
+    "aboutText": "Associazione della comunità algerina di Brescia.",
+    "explore": "Esplora",
+    "support": "Sostienici",
+    "contacts": "Contatti",
+    "rights": "Tutti i diritti riservati."
+  },
+  "privacy": {
+    "title": "Informativa sulla privacy",
+    "body": [
+      "Questa è una bozza dell'informativa sulla privacy. Il testo definitivo verrà redatto e approvato dall'associazione prima della messa in produzione.",
+      "Titolare del trattamento: Associazione Bledi, Brescia. I dati inviati tramite i moduli del sito (contatti, adesione) vengono utilizzati esclusivamente per rispondere alle richieste e gestire il rapporto associativo.",
+      "Il sito non utilizza cookie di profilazione. Eventuali strumenti di statistica sono anonimi e non richiedono consenso.",
+      "Puoi richiedere in qualsiasi momento l'accesso, la rettifica o la cancellazione dei tuoi dati scrivendo all'indirizzo email dell'associazione."
+    ]
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "text": "La pagina che cerchi non esiste o è stata spostata.",
+    "home": "Torna alla home"
+  }
+}
