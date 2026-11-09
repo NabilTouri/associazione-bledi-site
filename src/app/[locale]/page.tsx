@@ -74,10 +74,8 @@ export default async function HomePage() {
                 <Pattern className="text-on-brand/[0.08]" />
                 <div className="relative text-center">
                   <LogoSymbol tone="reversed" className="mx-auto h-36 w-auto" />
-                  <p className="mt-8 font-display text-4xl font-bold" lang="ar" dir="rtl">
-                    بلادي
-                  </p>
-                  <p className="mt-2 text-on-brand-muted">Brescia · Algérie</p>
+                  <p className="mt-8 px-6 font-display text-3xl font-bold xl:text-4xl">{settings.title}</p>
+                  <p className="mt-2 px-6 text-on-brand-muted">{settings.tagline}</p>
                 </div>
               </div>
             )}
