@@ -17,9 +17,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const statusStyles: Record<ActivityStatus, string> = {
-  planned: 'bg-amber-100 text-amber-800',
-  active: 'bg-primary-100 text-primary-800',
-  paused: 'bg-sand-200 text-muted',
+  planned: 'bg-warning-soft text-warning-ink',
+  active: 'bg-brand-soft text-brand-soft-ink',
+  paused: 'bg-surface-sunken text-ink-muted',
 }
 
 export default async function ActivitiesPage() {
@@ -55,7 +55,7 @@ export default async function ActivitiesPage() {
             <li
               key={activity._id}
               data-status={activity.status}
-              className={`flex flex-col overflow-hidden rounded-3xl bg-white ring-1 ring-sand-200 ${activity.status === 'active' ? '' : 'border-2 border-dashed border-sand-300 ring-0'}`}
+              className={`flex flex-col overflow-hidden rounded-3xl bg-surface-raised ring-1 ring-border ${activity.status === 'active' ? '' : 'border-2 border-dashed border-border-control ring-0'}`}
             >
               {activity.image?.asset && (
                 <SanityImage
@@ -68,16 +68,16 @@ export default async function ActivitiesPage() {
               )}
               <div className="flex flex-1 flex-col gap-3 p-6">
                 <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
-                  {activity.category && <span className="rounded-full bg-sand-100 px-3 py-1 text-muted">{activity.category}</span>}
+                  {activity.category && <span className="rounded-full bg-surface-alt px-3 py-1 text-ink-muted">{activity.category}</span>}
                   <span className={`rounded-full px-3 py-1 ${statusStyles[activity.status]}`}>
                     {dict.activities.status[activity.status]}
                   </span>
                 </div>
-                <h2 className="text-2xl font-bold text-primary-900">{activity.title}</h2>
-                {activity.description && <p className="leading-relaxed text-muted">{activity.description}</p>}
+                <h2 className="text-2xl font-bold text-ink-heading">{activity.title}</h2>
+                {activity.description && <p className="leading-relaxed text-ink-muted">{activity.description}</p>}
                 {activity.schedule && (
                   <p className="mt-auto flex items-center gap-2 text-sm font-medium">
-                    <Clock aria-hidden className="size-4 text-primary-600" />
+                    <Clock aria-hidden className="size-4 text-brand" />
                     {activity.schedule}
                   </p>
                 )}
@@ -86,10 +86,10 @@ export default async function ActivitiesPage() {
           ))}
         </ul>
 
-        <div className="mt-12 flex flex-col items-start gap-4 rounded-3xl bg-primary-50 p-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col items-start gap-4 rounded-3xl bg-brand-soft p-8 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-primary-900">{dict.activities.proposeTitle}</h2>
-            <p className="mt-1 text-muted">{dict.activities.proposeText}</p>
+            <h2 className="text-2xl font-bold text-ink-heading">{dict.activities.proposeTitle}</h2>
+            <p className="mt-1 text-ink-muted">{dict.activities.proposeText}</p>
           </div>
           <div className="flex flex-wrap gap-3">
             <ButtonLink href={href(locale, routes.join)}>{dict.nav.join}</ButtonLink>

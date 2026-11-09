@@ -1,11 +1,81 @@
-/** Provisional logo mark: replace with the association's official logo (see BACKLOG.md). */
-export function LogoMark({ className = 'size-10' }: { className?: string }) {
+/**
+ * The Associazione Bledi logo (design system "Associazione Bledi"): "Bledi" in Fraunces Bold,
+ * with the dot of the i replaced by the crescent and five-pointed star of the original mark.
+ * Lettering is outlined, so it renders without the font. Size it with a height class (e.g. `h-10 w-auto`).
+ */
+
+type Tone = 'color' | 'reversed' | 'mono'
+
+const tones = {
+  color: { word: 'fill-ink-heading', crescent: 'fill-brand', star: 'fill-accent', tile: 'fill-brand', onTile: 'fill-on-brand' },
+  reversed: { word: 'fill-on-brand', crescent: 'fill-on-brand', star: 'fill-accent', tile: 'fill-on-brand', onTile: 'fill-brand' },
+  mono: { word: 'fill-current', crescent: 'fill-current', star: 'fill-current', tile: 'fill-current', onTile: 'fill-surface' },
+} satisfies Record<Tone, Record<'word' | 'crescent' | 'star' | 'tile' | 'onTile', string>>
+
+type LogoProps = {
+  className?: string
+  tone?: Tone
+  /** Accessible name. Leave empty when the name is already written next to the logo. */
+  title?: string
+}
+
+function a11y(title?: string) {
+  return title ? { role: 'img', 'aria-label': title } : { 'aria-hidden': true }
+}
+
+/** "Bledi" with the crescent and star as the dot of the i. */
+export function Logo({ className = 'h-10 w-auto', tone: t = 'color', title }: LogoProps) {
+  const tone = tones[t]
   return (
-    <svg viewBox="0 0 48 48" aria-hidden className={className}>
-      <rect width="48" height="48" rx="14" className="fill-primary-600" />
-      <circle cx="21" cy="24" r="11" className="fill-white" />
-      <circle cx="24.6" cy="24" r="9" className="fill-primary-600" />
-      <path d="M31.5 19.4l1.3 2.7 3 .43-2.17 2.1.51 2.97-2.64-1.4-2.65 1.4.51-2.97-2.17-2.1 3-.43z" className="fill-accent-500" />
+    <svg viewBox="0 0 174.57 74.86" className={className} {...a11y(title)}>
+      <path
+        className={tone.word}
+        d="M48.08 48.11Q48.08 52.91 43.95 55.89Q39.82 58.86 31.38 58.86H7.38Q6.19 58.86 5.63 58.37Q5.07 57.87 5.07 57.07Q5.07 55.63 6.58 55.09L8.08 54.67Q8.91 54.38 9.31 53.92Q9.71 53.46 9.71 52.69V20.21Q9.71 19.47 9.31 19.01Q8.91 18.54 8.08 18.26L6.58 17.84Q5.07 17.3 5.07 15.86Q5.07 15.02 5.63 14.54Q6.19 14.06 7.38 14.06H26.13Q32.24 14.06 36.58 15.71Q40.91 17.36 43.22 20.3Q45.52 23.25 45.52 27.18Q45.52 30.38 43.65 32.9Q41.78 35.41 38.18 36.85Q34.58 38.29 29.33 38.29L30.96 37.14Q36.11 37.14 39.95 38.51Q43.79 39.89 45.94 42.38Q48.08 44.88 48.08 48.11ZM27.06 39.76H18.7V36.72H25.87Q28.5 36.72 30.27 35.73Q32.05 34.74 32.96 32.77Q33.87 30.8 33.87 27.86Q33.87 24.69 32.7 22.4Q31.54 20.11 29.33 18.85Q27.12 17.58 23.98 17.58H22.06V51.92Q22.06 53.68 23.09 54.51Q24.11 55.34 26.06 55.34H28.59Q30.93 55.34 32.54 54.43Q34.16 53.52 35.01 51.81Q35.86 50.1 35.86 47.73Q35.86 44.05 33.57 41.9Q31.28 39.76 27.06 39.76ZM65.46 13.36V53.01Q65.46 54.13 65.68 54.62Q65.9 55.12 66.45 55.31L67.41 55.63Q68.08 55.89 68.38 56.3Q68.69 56.72 68.69 57.26Q68.69 58 68.19 58.43Q67.7 58.86 66.61 58.86H53.01Q51.92 58.86 51.42 58.43Q50.93 58 50.93 57.26Q50.93 56.72 51.23 56.3Q51.54 55.89 52.21 55.63L53.2 55.31Q53.71 55.12 53.95 54.62Q54.19 54.13 54.19 53.01V19.57Q54.19 18.67 53.94 18.29Q53.68 17.9 53.14 17.78L51.92 17.58Q51.31 17.42 51.02 17.07Q50.74 16.72 50.74 16.18Q50.74 15.54 51.1 15.15Q51.47 14.77 52.46 14.42L59.06 11.92Q60.53 11.38 61.38 11.15Q62.22 10.93 62.9 10.93Q64.18 10.93 64.82 11.6Q65.46 12.27 65.46 13.36ZM102.54 39.73Q102.54 41.68 101.46 42.74Q100.37 43.79 98.35 43.79H78.86V40.94H89.68Q91.34 40.94 91.34 39.38Q91.34 35.22 90.11 33.25Q88.88 31.28 86.83 31.28Q85.26 31.28 84.06 32.3Q82.86 33.33 82.16 35.33Q81.46 37.33 81.46 40.24Q81.46 46.26 84.22 49.17Q86.99 52.08 91.66 52.08Q94.16 52.08 96.1 51.25Q98.03 50.42 99.44 48.62Q100.18 47.92 100.58 47.66Q100.98 47.41 101.36 47.41Q101.94 47.41 102.19 47.95Q102.45 48.5 102.45 49.26Q102.38 52.05 100.53 54.43Q98.67 56.82 95.42 58.26Q92.18 59.7 87.95 59.7Q83.18 59.7 79.46 57.78Q75.73 55.86 73.57 52.42Q71.41 48.98 71.41 44.34Q71.41 39.31 73.42 35.52Q75.44 31.73 79.23 29.6Q83.02 27.47 88.34 27.47Q92.94 27.47 96.11 29.06Q99.28 30.64 100.91 33.39Q102.54 36.14 102.54 39.73ZM128.88 53.39 128.53 53.3V19.57Q128.53 18.67 128.27 18.29Q128.02 17.9 127.47 17.78L126.26 17.58Q125.65 17.42 125.36 17.07Q125.07 16.72 125.07 16.18Q125.07 15.54 125.44 15.15Q125.81 14.77 126.8 14.42L133.39 11.92Q134.8 11.41 135.66 11.17Q136.53 10.93 137.33 10.93Q138.51 10.93 139.15 11.6Q139.79 12.27 139.79 13.36V53.01Q139.79 54.13 140.02 54.62Q140.24 55.12 140.78 55.31L141.74 55.63Q142.42 55.89 142.72 56.3Q143.02 56.72 143.02 57.26Q143.02 58 142.53 58.43Q142.03 58.86 140.94 58.86H133.49Q131.6 58.86 130.24 57.57Q128.88 56.27 128.88 54.35ZM105.71 44.53Q105.71 39.38 107.79 35.54Q109.87 31.7 113.46 29.58Q117.04 27.47 121.55 27.47Q125.39 27.47 128.29 29.18Q131.18 30.9 133.17 34.26L130.38 36.34Q128.85 33.97 127.22 32.88Q125.58 31.79 123.7 31.79Q121.84 31.79 120.42 32.99Q118.99 34.19 118.18 36.74Q117.36 39.28 117.36 43.34Q117.36 47.12 118.18 49.5Q118.99 51.89 120.4 53.02Q121.81 54.16 123.6 54.16Q125.65 54.16 127.38 52.86Q129.1 51.57 130.61 48.78L132.43 50.77Q129.84 54.93 126.48 57.31Q123.12 59.7 118.93 59.7Q115.12 59.7 112.13 57.76Q109.14 55.82 107.42 52.4Q105.71 48.98 105.71 44.53Z"
+      />
+      <path
+        className={tone.word}
+        d="M160.66 29.39V53.01Q160.66 54.1 160.91 54.58Q161.17 55.06 161.68 55.31L162.58 55.63Q163.18 55.89 163.49 56.3Q163.79 56.72 163.79 57.3Q163.79 58.03 163.26 58.45Q162.74 58.86 161.81 58.86H148.34Q147.41 58.86 146.88 58.45Q146.35 58.03 146.35 57.3Q146.35 56.72 146.67 56.32Q146.99 55.92 147.54 55.63L148.53 55.31Q149.04 55.06 149.3 54.58Q149.55 54.1 149.55 53.01V36.05Q149.55 35.12 149.28 34.75Q149.01 34.38 148.46 34.22L147.28 34.1Q146.7 33.9 146.4 33.58Q146.1 33.26 146.1 32.69Q146.1 32.08 146.51 31.68Q146.93 31.28 147.82 30.96L155.47 28.34Q156.66 27.95 157.36 27.78Q158.06 27.6 158.86 27.6Q159.66 27.6 160.16 28.1Q160.66 28.59 160.66 29.39Z"
+      />
+      <g transform="translate(139.23 -6.46) scale(0.6)">
+        <path className={tone.crescent} d="M38.04 18.62A18 18 0 1 0 38.04 45.38A14.73 14.73 0 0 1 38.04 18.62Z" />
+        <path
+          className={tone.star}
+          d="M43.84 23.49L45.64 29.03L51.46 29.03L46.75 32.46L48.55 38L43.84 34.57L39.12 38L40.92 32.46L36.21 29.03L42.04 29.03Z"
+        />
+      </g>
+    </svg>
+  )
+}
+
+/** The app icon: white crescent and red star on the green rounded tile (the original mark, redrawn). */
+export function LogoIcon({ className = 'size-10', tone: t = 'color', title }: LogoProps) {
+  const tone = tones[t]
+  return (
+    <svg viewBox="0 0 64 64" className={className} {...a11y(title)}>
+      <rect x="0" y="0" width="64" height="64" rx="15" className={tone.tile} />
+      <g transform="translate(4.05 2.11) scale(0.93)">
+        <path className={tone.onTile} d="M38.04 18.62A18 18 0 1 0 38.04 45.38A14.73 14.73 0 0 1 38.04 18.62Z" />
+        <path
+          className={tone.star}
+          d="M43.84 23.49L45.64 29.03L51.46 29.03L46.75 32.46L48.55 38L43.84 34.57L39.12 38L40.92 32.46L36.21 29.03L42.04 29.03Z"
+        />
+      </g>
+    </svg>
+  )
+}
+
+/** The crescent and star alone. */
+export function LogoSymbol({ className = 'h-10 w-auto', tone: t = 'color', title }: LogoProps) {
+  const tone = tones[t]
+  return (
+    <svg viewBox="0 0 45.85 38" className={className} {...a11y(title)}>
+      <g transform="translate(-7 -13) scale(1)">
+        <path className={tone.crescent} d="M38.04 18.62A18 18 0 1 0 38.04 45.38A14.73 14.73 0 0 1 38.04 18.62Z" />
+        <path
+          className={tone.star}
+          d="M43.84 23.49L45.64 29.03L51.46 29.03L46.75 32.46L48.55 38L43.84 34.57L39.12 38L40.92 32.46L36.21 29.03L42.04 29.03Z"
+        />
+      </g>
     </svg>
   )
 }

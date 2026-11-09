@@ -4,18 +4,18 @@ import type { ReactNode } from 'react'
 type Variant = 'info' | 'soon' | 'demo' | 'warning'
 
 const styles: Record<Variant, { box: string; icon: ReactNode }> = {
-  info: { box: 'bg-sky-50 text-sky-950 ring-sky-200', icon: <Info aria-hidden className="size-5 shrink-0 text-sky-700" /> },
+  info: { box: 'bg-info-soft text-info-ink ring-1 ring-info-line', icon: <Info aria-hidden className="size-5 shrink-0" /> },
   soon: {
-    box: 'bg-amber-50 text-amber-950 ring-amber-200',
-    icon: <Construction aria-hidden className="size-5 shrink-0 text-amber-700" />,
+    box: 'bg-warning-soft text-warning-ink ring-1 ring-warning-line',
+    icon: <Construction aria-hidden className="size-5 shrink-0" />,
   },
   demo: {
-    box: 'bg-violet-50 text-violet-950 ring-violet-200',
-    icon: <Sparkles aria-hidden className="size-5 shrink-0 text-violet-700" />,
+    box: 'border-[1.5px] border-dashed border-border-control bg-surface-alt text-ink',
+    icon: <Sparkles aria-hidden className="size-5 shrink-0 text-ink-link" />,
   },
   warning: {
-    box: 'bg-red-50 text-red-950 ring-red-200',
-    icon: <TriangleExclamationPoint aria-hidden className="size-5 shrink-0 text-red-700" />,
+    box: 'bg-danger-soft text-danger-ink ring-1 ring-danger-line',
+    icon: <TriangleExclamationPoint aria-hidden className="size-5 shrink-0" />,
   },
 }
 
@@ -41,7 +41,7 @@ export function Notice({
     <div
       role="note"
       data-notice={variant}
-      className={`flex gap-3 rounded-2xl ring-1 ${compact ? 'p-3 text-sm' : 'p-4 sm:p-5'} ${style.box} ${className}`}
+      className={`flex gap-3 rounded-2xl ${compact ? 'p-3 text-sm' : 'p-4 sm:p-5'} ${style.box} ${className}`}
     >
       {style.icon}
       <div className="space-y-1">

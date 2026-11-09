@@ -49,7 +49,7 @@ export default async function AlbumPage({ params }: PageProps<'/[locale]/galleri
                     className="w-full rounded-2xl"
                   />
                 </a>
-                {image.caption && <figcaption className="mt-2 text-sm text-muted">{image.caption}</figcaption>}
+                {image.caption && <figcaption className="mt-2 text-sm text-ink-muted">{image.caption}</figcaption>}
               </figure>
             </li>
           ))}

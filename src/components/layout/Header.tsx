@@ -7,7 +7,7 @@ import { href, mainNav, routes } from '@/lib/site'
 
 import { ButtonLink } from '../ui/ButtonLink'
 import { Container } from '../ui/Container'
-import { LogoMark } from '../ui/Logo'
+import { Logo } from '../ui/Logo'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { MobileMenu } from './MobileMenu'
 import { NavLink } from './NavLink'
@@ -15,13 +15,12 @@ import { NavLink } from './NavLink'
 export function Header({ locale, dict, siteName }: { locale: Locale; dict: Dictionary; siteName: string }) {
   const items = mainNav.map((key) => ({ key, label: dict.nav[key], href: href(locale, routes[key]) }))
   return (
-    <header className="sticky top-0 z-40 border-b border-sand-200/80 bg-sand-50/90 backdrop-blur supports-[backdrop-filter]:bg-sand-50/75">
+    <header className="sticky top-0 z-40 border-b border-border/80 bg-surface/90 backdrop-blur supports-[backdrop-filter]:bg-surface/75">
       <Container className="flex h-16 items-center justify-between gap-2 sm:h-20 sm:gap-4">
-        <Link href={href(locale)} className="flex min-w-0 items-center gap-2.5 rounded-lg sm:gap-3">
-          <LogoMark className="size-9 shrink-0 sm:size-11" />
-          <span className="min-w-0 leading-tight">
-            <span className="line-clamp-2 font-display text-[15px] font-bold text-primary-900 sm:line-clamp-1 sm:text-lg">{siteName}</span>
-            <span className="hidden truncate text-xs text-muted sm:block">{dict.meta.tagline}</span>
+        <Link href={href(locale)} className="flex min-w-0 items-center gap-3 rounded-lg sm:gap-4">
+          <Logo className="h-9 w-auto shrink-0 sm:h-11" title={siteName} />
+          <span className="hidden max-w-40 border-s border-border ps-3 text-xs leading-snug text-ink-muted xl:block">
+            {dict.meta.tagline}
           </span>
         </Link>
 

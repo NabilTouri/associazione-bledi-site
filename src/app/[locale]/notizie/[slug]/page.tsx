@@ -45,27 +45,27 @@ export default async function PostPage({ params }: PageProps<'/[locale]/notizie/
 
   return (
     <article className="pb-20">
-      <header className="border-b border-sand-200 bg-sand-100">
+      <header className="border-b border-border bg-surface-alt">
         <Container className="max-w-3xl py-12 sm:py-16">
           <Link
             href={href(locale, routes.news)}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary-700 hover:text-primary-900"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-ink-link hover:text-ink-heading"
           >
             <ArrowLeft aria-hidden className="size-4 rtl:rotate-180" />
             {dict.news.title}
           </Link>
           <p className="mt-6 flex flex-wrap items-center gap-3 text-sm">
             <span
-              className={`rounded-full px-3 py-1 font-semibold ${isAnnouncement ? 'bg-accent-500/10 text-accent-600' : 'bg-primary-50 text-primary-700'}`}
+              className={`rounded-full px-3 py-1 font-semibold ${isAnnouncement ? 'bg-accent/10 text-accent-ink' : 'bg-brand-soft text-ink-link'}`}
             >
               {isAnnouncement ? dict.news.announcement : dict.news.news}
             </span>
-            <time dateTime={post.publishedAt} className="text-muted">
+            <time dateTime={post.publishedAt} className="text-ink-muted">
               {dict.common.publishedOn} {formatDate(post.publishedAt, locale)}
             </time>
           </p>
-          <h1 className="mt-4 text-4xl font-bold tracking-tight text-primary-900 sm:text-5xl">{post.title}</h1>
-          {post.excerpt && <p className="mt-4 text-xl leading-relaxed text-muted">{post.excerpt}</p>}
+          <h1 className="mt-4 text-4xl font-bold tracking-tight text-ink-heading sm:text-5xl">{post.title}</h1>
+          {post.excerpt && <p className="mt-4 text-xl leading-relaxed text-ink-muted">{post.excerpt}</p>}
         </Container>
       </header>
       <Container className="max-w-3xl pt-10">

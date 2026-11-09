@@ -30,18 +30,18 @@ function WayCard({
   unavailableLabel?: string
 }) {
   return (
-    <div className="flex flex-col gap-3 rounded-3xl bg-white p-6 ring-1 ring-sand-200">
+    <div className="flex flex-col gap-3 rounded-3xl bg-surface-raised p-6 ring-1 ring-border">
       <div className="flex items-start justify-between gap-3">
-        <span className="flex size-11 items-center justify-center rounded-2xl bg-primary-50 text-primary-700">{icon}</span>
+        <span className="flex size-11 items-center justify-center rounded-2xl bg-brand-soft text-ink-link">{icon}</span>
         {unavailableLabel && (
-          <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-800">
+          <span className="inline-flex items-center gap-1 rounded-full bg-warning-soft px-2.5 py-1 text-xs font-semibold text-warning-ink">
             <Clock3 aria-hidden className="size-3.5" />
             {unavailableLabel}
           </span>
         )}
       </div>
-      <h3 className="text-lg font-bold text-primary-900">{title}</h3>
-      <div className="text-sm leading-relaxed text-muted">{children}</div>
+      <h3 className="text-lg font-bold text-ink-heading">{title}</h3>
+      <div className="text-sm leading-relaxed text-ink-muted">{children}</div>
     </div>
   )
 }
@@ -82,7 +82,7 @@ export default async function DonatePage() {
         <DonationFlow locale={locale} labels={dict.donate} formLabels={dict.forms} impact={content.impact} />
       </Container>
 
-      <Section title={dict.donate.otherWaysTitle} className="bg-white">
+      <Section title={dict.donate.otherWaysTitle} className="bg-surface-raised">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <WayCard
             icon={<Landmark aria-hidden className="size-5" />}

@@ -27,8 +27,8 @@ export default async function GalleryPage() {
         {albums.length ? (
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {albums.map((album) => (
-              <li key={album._id} className="group relative overflow-hidden rounded-3xl bg-white ring-1 ring-sand-200">
-                <div className="aspect-[4/3] overflow-hidden bg-sand-100">
+              <li key={album._id} className="group relative overflow-hidden rounded-3xl bg-surface-raised ring-1 ring-border">
+                <div className="aspect-[4/3] overflow-hidden bg-surface-alt">
                   <SanityImage
                     image={album.cover}
                     width={800}
@@ -38,12 +38,12 @@ export default async function GalleryPage() {
                   />
                 </div>
                 <div className="p-5">
-                  <h2 className="text-lg font-bold text-primary-900">
+                  <h2 className="text-lg font-bold text-ink-heading">
                     <Link href={href(locale, `/galleria/${album.slug}`)} className="after:absolute after:inset-0">
                       {album.title}
                     </Link>
                   </h2>
-                  <p className="mt-1 text-sm text-muted">
+                  <p className="mt-1 text-sm text-ink-muted">
                     {album.date && `${formatDate(album.date, locale)} · `}
                     {album.count} {dict.common.photos}
                   </p>
@@ -52,9 +52,9 @@ export default async function GalleryPage() {
             ))}
           </ul>
         ) : (
-          <div className="flex flex-col items-center gap-4 rounded-3xl bg-white p-12 text-center ring-1 ring-sand-200">
-            <Images aria-hidden className="size-10 text-primary-300" />
-            <p className="text-muted">{dict.gallery.empty}</p>
+          <div className="flex flex-col items-center gap-4 rounded-3xl bg-surface-raised p-12 text-center ring-1 ring-border">
+            <Images aria-hidden className="size-10 text-border-control" />
+            <p className="text-ink-muted">{dict.gallery.empty}</p>
           </div>
         )}
       </Section>

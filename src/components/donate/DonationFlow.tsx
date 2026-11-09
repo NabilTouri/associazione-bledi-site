@@ -114,9 +114,11 @@ export function DonationFlow({
           const current = index === stepIndex
           return (
             <li key={s} aria-current={current ? 'step' : undefined} className="flex flex-col gap-2">
-              <span className={`h-1.5 rounded-full ${done || current ? 'bg-primary-600' : 'bg-sand-200'}`} />
-              <span className={`flex items-center gap-1.5 text-xs font-semibold sm:text-sm ${current ? 'text-primary-800' : 'text-muted'}`}>
-                {done && <Check aria-hidden className="size-4 text-primary-600" />}
+              <span className={`h-1.5 rounded-full ${done || current ? 'bg-brand' : 'bg-surface-sunken'}`} />
+              <span
+                className={`flex items-center gap-1.5 text-xs font-semibold sm:text-sm ${current ? 'text-brand-soft-ink' : 'text-ink-muted'}`}
+              >
+                {done && <Check aria-hidden className="size-4 text-brand" />}
                 {labels.steps[s]}
               </span>
             </li>
@@ -125,16 +127,16 @@ export function DonationFlow({
       </ol>
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-8">
-        <div className="min-w-0 rounded-3xl bg-white p-4 shadow-sm ring-1 ring-sand-200 sm:p-8">
+        <div className="min-w-0 rounded-3xl bg-surface-raised p-4 shadow-sm ring-1 ring-border sm:p-8">
           {step === 'amount' && (
             <form onSubmit={submitAmount} noValidate className="space-y-8">
               <fieldset>
                 <legend className="mb-3 text-sm font-semibold">{labels.frequency}</legend>
-                <div className="grid grid-cols-2 gap-2 rounded-2xl bg-sand-100 p-1.5">
+                <div className="grid grid-cols-2 gap-2 rounded-2xl bg-surface-alt p-1.5">
                   {(['one_time', 'monthly'] as const).map((value) => (
                     <label
                       key={value}
-                      className="flex cursor-pointer items-center justify-center gap-1.5 rounded-xl px-2 py-3 text-sm font-semibold whitespace-nowrap text-muted has-[:checked]:bg-white has-[:checked]:text-primary-800 has-[:checked]:shadow-sm has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primary-500 sm:gap-2 sm:px-4"
+                      className="flex cursor-pointer items-center justify-center gap-1.5 rounded-xl px-2 py-3 text-sm font-semibold whitespace-nowrap text-ink-muted has-[:checked]:bg-surface-raised has-[:checked]:text-brand-soft-ink has-[:checked]:shadow-sm has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-brand sm:gap-2 sm:px-4"
                     >
                       <input
                         type="radio"
@@ -157,7 +159,7 @@ export function DonationFlow({
                   {presets.map((value) => (
                     <label
                       key={value}
-                      className="flex cursor-pointer flex-col items-center rounded-2xl border-2 border-sand-200 bg-white px-3 py-4 text-center transition-colors hover:border-sand-300 has-[:checked]:border-primary-500 has-[:checked]:bg-primary-50 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primary-500 has-[:focus-visible]:ring-offset-2"
+                      className="flex cursor-pointer flex-col items-center rounded-2xl border-2 border-border bg-surface-raised px-3 py-4 text-center transition-colors hover:border-border-control has-[:checked]:border-brand has-[:checked]:bg-brand-soft has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-brand has-[:focus-visible]:ring-offset-2"
                     >
                       <input
                         type="radio"
@@ -170,22 +172,22 @@ export function DonationFlow({
                         }}
                         className="sr-only"
                       />
-                      <span className="text-2xl font-bold text-primary-900" dir="ltr">
+                      <span className="text-2xl font-bold text-ink-heading" dir="ltr">
                         {formatCurrency(value, locale)}
                       </span>
-                      {frequency === 'monthly' && <span className="text-xs text-muted">{labels.perMonth}</span>}
+                      {frequency === 'monthly' && <span className="text-xs text-ink-muted">{labels.perMonth}</span>}
                     </label>
                   ))}
                 </div>
                 <label
-                  className={`mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-2xl border-2 px-4 py-3 transition-colors focus-within:border-primary-500 ${
-                    preset === null ? 'border-primary-500 bg-primary-50' : 'border-sand-200 bg-white hover:border-sand-300'
-                  } ${err('amount') ? 'border-accent-500!' : ''}`}
+                  className={`mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-2xl border-2 px-4 py-3 transition-colors focus-within:border-brand ${
+                    preset === null ? 'border-brand bg-brand-soft' : 'border-border bg-surface-raised hover:border-border-control'
+                  } ${err('amount') ? 'border-accent-ink!' : ''}`}
                 >
-                  <span className="text-sm font-semibold text-muted">{labels.customAmount}</span>
+                  <span className="text-sm font-semibold text-ink-muted">{labels.customAmount}</span>
                   <span className="ms-auto flex items-baseline gap-1.5">
                     <span className="flex items-baseline gap-1.5" dir="ltr">
-                      <span aria-hidden className="text-xl font-bold text-primary-900">
+                      <span aria-hidden className="text-xl font-bold text-ink-heading">
                         €
                       </span>
                       <input
@@ -204,15 +206,15 @@ export function DonationFlow({
                         aria-label={labels.customAmount}
                         aria-invalid={err('amount') ? true : undefined}
                         aria-describedby={err('amount') ? 'amount-error' : undefined}
-                        className="w-24 border-0 border-b-2 border-dashed border-sand-300 bg-transparent p-0 text-end text-2xl font-bold text-primary-900 placeholder:text-sand-300 focus:border-primary-500 focus:outline-none"
+                        className="w-24 border-0 border-b-2 border-dashed border-border-control bg-transparent p-0 text-end text-2xl font-bold text-ink-heading placeholder:text-border-control focus:border-brand focus:outline-none"
                       />
                     </span>
-                    {frequency === 'monthly' && <span className="text-xs text-muted">{labels.perMonth}</span>}
+                    {frequency === 'monthly' && <span className="text-xs text-ink-muted">{labels.perMonth}</span>}
                   </span>
                 </label>
                 <FieldError id="amount-error" error={err('amount')} labels={formLabels} />
                 {preset && (
-                  <p className="mt-4 rounded-2xl bg-primary-50 p-4 text-sm text-primary-900">{impact[String(preset) as ImpactAmount]}</p>
+                  <p className="mt-4 rounded-2xl bg-brand-soft p-4 text-sm text-ink-heading">{impact[String(preset) as ImpactAmount]}</p>
                 )}
               </fieldset>
 
@@ -225,7 +227,7 @@ export function DonationFlow({
 
           {step === 'details' && (
             <form onSubmit={submitDetails} noValidate className="space-y-5">
-              <h2 className="text-2xl font-bold text-primary-900">{labels.detailsTitle}</h2>
+              <h2 className="text-2xl font-bold text-ink-heading">{labels.detailsTitle}</h2>
               <div className="grid gap-5 sm:grid-cols-2">
                 <Field
                   name="firstName"
@@ -301,11 +303,13 @@ export function DonationFlow({
 
           {step === 'payment' && (
             <form onSubmit={submitPayment} noValidate className="space-y-5">
-              <h2 className="flex items-center gap-2 text-2xl font-bold text-primary-900">
-                <CreditCard aria-hidden className="size-6 text-primary-600" />
+              <h2 className="flex items-center gap-2 text-2xl font-bold text-ink-heading">
+                <CreditCard aria-hidden className="size-6 text-brand" />
                 {labels.paymentTitle}
               </h2>
-              <p className="rounded-xl bg-violet-50 p-3 text-sm text-violet-900 ring-1 ring-violet-200">{labels.demoCardHint}</p>
+              <p className="rounded-xl border-[1.5px] border-dashed border-border-control bg-surface-alt p-3 text-sm text-ink">
+                {labels.demoCardHint}
+              </p>
               <Field
                 name="cc-name"
                 autoComplete="off"
@@ -354,7 +358,7 @@ export function DonationFlow({
                   labels={formLabels}
                 />
               </div>
-              <p className="flex items-start gap-2 text-xs text-muted">
+              <p className="flex items-start gap-2 text-xs text-ink-muted">
                 <Lock aria-hidden className="mt-0.5 size-3.5 shrink-0" />
                 {labels.secure}
               </p>
@@ -373,16 +377,16 @@ export function DonationFlow({
 
           {step === 'done' && (
             <div role="status" className="py-6 text-center">
-              <span className="mx-auto flex size-16 items-center justify-center rounded-full bg-primary-100 text-primary-700">
+              <span className="mx-auto flex size-16 items-center justify-center rounded-full bg-brand-soft text-brand-soft-ink">
                 <Check aria-hidden className="size-8" />
               </span>
-              <h2 className="mt-6 text-3xl font-bold text-primary-900">{labels.successTitle}</h2>
-              <p className="mx-auto mt-3 max-w-md text-muted">{labels.successText}</p>
-              {frequency === 'monthly' && <p className="mx-auto mt-2 max-w-md text-sm text-muted">{labels.successMonthly}</p>}
+              <h2 className="mt-6 text-3xl font-bold text-ink-heading">{labels.successTitle}</h2>
+              <p className="mx-auto mt-3 max-w-md text-ink-muted">{labels.successText}</p>
+              {frequency === 'monthly' && <p className="mx-auto mt-2 max-w-md text-sm text-ink-muted">{labels.successMonthly}</p>}
               {reference && (
                 <p className="mt-6 text-sm">
                   {labels.reference}:{' '}
-                  <code className="rounded bg-sand-100 px-2 py-1 font-mono font-semibold" data-testid="donation-reference">
+                  <code className="rounded bg-surface-alt px-2 py-1 font-mono font-semibold" data-testid="donation-reference">
                     {reference}
                   </code>
                 </p>
@@ -395,22 +399,24 @@ export function DonationFlow({
         </div>
 
         {/* Summary */}
-        <aside className="h-fit rounded-3xl bg-primary-800 p-6 text-white lg:sticky lg:top-28">
-          <p className="text-sm font-semibold text-primary-200 uppercase">{labels.summary}</p>
+        <aside className="on-brand h-fit rounded-3xl bg-surface-brand p-6 text-on-brand lg:sticky lg:top-28">
+          <p className="text-sm font-semibold text-on-brand-muted uppercase">{labels.summary}</p>
           <dl className="mt-4 space-y-3">
             <div className="flex justify-between gap-4">
-              <dt className="text-primary-100">{labels.frequency}</dt>
+              <dt className="text-on-brand-muted">{labels.frequency}</dt>
               <dd className="font-semibold">{frequency === 'monthly' ? labels.monthly : labels.oneTime}</dd>
             </div>
             <div className="flex justify-between gap-4 border-t border-white/15 pt-3 text-lg">
               <dt>{labels.total}</dt>
               <dd className="font-bold" data-testid="donation-total">
                 {amountLabel}
-                {frequency === 'monthly' && amountValid && <span className="text-sm font-normal text-primary-200">{labels.perMonth}</span>}
+                {frequency === 'monthly' && amountValid && (
+                  <span className="text-sm font-normal text-on-brand-muted">{labels.perMonth}</span>
+                )}
               </dd>
             </div>
           </dl>
-          <p className="mt-6 flex items-start gap-2 text-xs text-primary-200">
+          <p className="mt-6 flex items-start gap-2 text-xs text-on-brand-muted">
             <Lock aria-hidden className="mt-0.5 size-3.5 shrink-0" />
             {labels.secure}
           </p>

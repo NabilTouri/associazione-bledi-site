@@ -58,7 +58,7 @@ export function ContactForm({
         <Field name="message" multiline label={labels.message} required error={errors.message} labels={formLabels} />
         <ConsentCheckbox label={formLabels.consent} error={errors.consent} labels={formLabels} privacyHref={privacyHref} />
         {state.status === 'error' && !state.errors && (
-          <p role="alert" className="text-sm font-medium text-accent-600">
+          <p role="alert" className="text-sm font-medium text-accent-ink">
             {formLabels.error}
           </p>
         )}

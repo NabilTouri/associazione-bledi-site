@@ -13,7 +13,7 @@ Legenda: 🧑‍💼 decisione o azione dell'associazione · 🛠️ lavoro tecn
 - [ ] ✍️ Inserire il direttivo (con consenso per eventuali foto)
 - [ ] ✍️ Rivedere nello Studio i testi di **Pagina Donazioni** e **Pagina Trasparenza** (oggi il sito usa i testi predefiniti)
 - [ ] 🧑‍💼 Far approvare l'**informativa privacy** definitiva e pubblicarla come _Pagina legale_ con slug `privacy`
-- [ ] 🧑‍💼 Logo e identità visiva definitivi (oggi c'è un logo provvisorio in `src/components/ui/Logo.tsx` e `src/app/icon.svg`)
+- [x] 🧑‍💼 Logo e identità visiva definitivi (design system "Associazione Bledi": logo con mezzaluna e stella sulla i, palette, token in `src/app/globals.css`)
 - [ ] 🧑‍💼 Far rileggere le traduzioni in arabo e francese da madrelingua
 
 ## Donazioni — oggi in modalità demo

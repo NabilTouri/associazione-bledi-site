@@ -58,7 +58,7 @@ export function MembershipForm({
         <fieldset>
           <legend className="mb-2 text-sm font-semibold">
             {labels.type}
-            <span aria-hidden className="text-accent-500">
+            <span aria-hidden className="text-accent-ink">
               {' '}
               *
             </span>
@@ -67,7 +67,7 @@ export function MembershipForm({
             {types.map((type, index) => (
               <label
                 key={type.value}
-                className="flex cursor-pointer items-center gap-3 rounded-xl border border-sand-300 bg-white px-4 py-3 text-sm font-medium transition-colors hover:border-primary-500 has-[:checked]:border-primary-500 has-[:checked]:bg-primary-50 has-[:checked]:text-primary-800 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primary-500"
+                className="flex cursor-pointer items-center gap-3 rounded-xl border border-border-control bg-surface-raised px-4 py-3 text-sm font-medium transition-colors hover:border-brand has-[:checked]:border-brand has-[:checked]:bg-brand-soft has-[:checked]:text-brand-soft-ink has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-brand"
               >
                 <input type="radio" name="type" value={type.value} defaultChecked={index === 0} className="radio-input" />
                 {type.label}
@@ -93,7 +93,7 @@ export function MembershipForm({
         <Field name="notes" multiline label={labels.notes} error={errors.notes} labels={formLabels} />
         <ConsentCheckbox label={formLabels.consent} error={errors.consent} labels={formLabels} privacyHref={privacyHref} />
         {state.status === 'error' && !state.errors && (
-          <p role="alert" className="text-sm font-medium text-accent-600">
+          <p role="alert" className="text-sm font-medium text-accent-ink">
             {formLabels.error}
           </p>
         )}

@@ -26,11 +26,11 @@ export default async function ContactPage() {
         <ContactForm locale={locale} labels={dict.contact} formLabels={dict.forms} privacyHref={href(locale, routes.privacy)} />
 
         <aside className="space-y-6">
-          <ul className="space-y-5 rounded-3xl bg-white p-6 ring-1 ring-sand-200">
+          <ul className="space-y-5 rounded-3xl bg-surface-raised p-6 ring-1 ring-border">
             <li className="flex gap-3">
-              <MapPin aria-hidden className="mt-0.5 size-5 shrink-0 text-primary-600" />
+              <MapPin aria-hidden className="mt-0.5 size-5 shrink-0 text-brand" />
               <div>
-                <p className="text-sm font-semibold text-muted">{dict.contact.addressTitle}</p>
+                <p className="text-sm font-semibold text-ink-muted">{dict.contact.addressTitle}</p>
                 <a href={mapsUrl(settings.mapQuery)} target="_blank" rel="noopener noreferrer" className="font-medium hover:underline">
                   {settings.address}
                 </a>
@@ -38,9 +38,9 @@ export default async function ContactPage() {
             </li>
             {settings.email && (
               <li className="flex gap-3">
-                <Mail aria-hidden className="mt-0.5 size-5 shrink-0 text-primary-600" />
+                <Mail aria-hidden className="mt-0.5 size-5 shrink-0 text-brand" />
                 <div>
-                  <p className="text-sm font-semibold text-muted">{dict.contact.emailTitle}</p>
+                  <p className="text-sm font-semibold text-ink-muted">{dict.contact.emailTitle}</p>
                   <a href={`mailto:${settings.email}`} className="font-medium break-all hover:underline">
                     {settings.email}
                   </a>
@@ -49,9 +49,9 @@ export default async function ContactPage() {
             )}
             {settings.phone && (
               <li className="flex gap-3">
-                <Phone aria-hidden className="mt-0.5 size-5 shrink-0 text-primary-600" />
+                <Phone aria-hidden className="mt-0.5 size-5 shrink-0 text-brand" />
                 <div>
-                  <p className="text-sm font-semibold text-muted">{dict.contact.phoneTitle}</p>
+                  <p className="text-sm font-semibold text-ink-muted">{dict.contact.phoneTitle}</p>
                   <a href={`tel:${settings.phone.replace(/\s/g, '')}`} className="font-medium hover:underline" dir="ltr">
                     {settings.phone}
                   </a>
@@ -60,9 +60,9 @@ export default async function ContactPage() {
             )}
             {settings.social.length > 0 && (
               <li className="flex gap-3">
-                <Share2 aria-hidden className="mt-0.5 size-5 shrink-0 text-primary-600" />
+                <Share2 aria-hidden className="mt-0.5 size-5 shrink-0 text-brand" />
                 <div>
-                  <p className="text-sm font-semibold text-muted">{dict.contact.followUs}</p>
+                  <p className="text-sm font-semibold text-ink-muted">{dict.contact.followUs}</p>
                   <p className="flex flex-wrap gap-x-4">
                     {settings.social.map((item) => (
                       <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer" className="font-medium hover:underline">
@@ -83,7 +83,7 @@ export default async function ContactPage() {
             title={dict.home.whereTitle}
             src={osmEmbedUrl(settings.location)}
             loading="lazy"
-            className="h-72 w-full rounded-3xl border-0 ring-1 ring-sand-200"
+            className="h-72 w-full rounded-3xl border-0 ring-1 ring-border"
           />
         </aside>
       </Container>

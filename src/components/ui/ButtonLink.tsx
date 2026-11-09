@@ -4,11 +4,11 @@ import type { ComponentProps } from 'react'
 export type ButtonVariant = 'primary' | 'secondary' | 'accent' | 'ghost' | 'light'
 
 const variants: Record<ButtonVariant, string> = {
-  primary: 'bg-primary-600 text-white hover:bg-primary-700 shadow-sm',
-  accent: 'bg-accent-500 text-white hover:bg-accent-600 shadow-sm',
-  secondary: 'bg-white text-primary-800 ring-1 ring-sand-300 hover:ring-primary-500 hover:text-primary-700',
-  ghost: 'text-primary-700 hover:bg-primary-50',
-  light: 'bg-white/10 text-white ring-1 ring-white/30 hover:bg-white/20',
+  primary: 'bg-brand text-on-brand hover:bg-brand-strong shadow-sm',
+  accent: 'bg-accent text-on-accent hover:bg-accent-strong shadow-sm',
+  secondary: 'bg-surface-raised text-brand-soft-ink ring-1 ring-border-control hover:ring-brand hover:text-ink-link',
+  ghost: 'text-ink-link hover:bg-brand-soft',
+  light: 'bg-white/10 text-on-brand ring-1 ring-white/30 hover:bg-white/20',
 }
 
 export const buttonClasses = (variant: ButtonVariant = 'primary', className = '') =>

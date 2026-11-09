@@ -6,7 +6,7 @@ import { PostCard } from '@/components/content/PostCard'
 import { SanityImage } from '@/components/content/SanityImage'
 import { ButtonLink } from '@/components/ui/ButtonLink'
 import { Container } from '@/components/ui/Container'
-import { LogoMark } from '@/components/ui/Logo'
+import { LogoSymbol } from '@/components/ui/Logo'
 import { Notice } from '@/components/ui/Notice'
 import { Pattern } from '@/components/ui/Pattern'
 import { Section } from '@/components/ui/Section'
@@ -33,19 +33,18 @@ export default async function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-primary-800 text-white">
-        <Pattern className="text-white/[0.07]" />
-        <div aria-hidden className="absolute -end-32 -top-32 size-96 rounded-full bg-primary-500/40 blur-3xl" />
+      <section className="on-brand relative overflow-hidden bg-surface-brand text-on-brand">
+        <Pattern className="text-on-brand/[0.07]" />
         <Container className="relative grid items-center gap-12 py-14 sm:py-28 lg:grid-cols-[1.2fr_1fr]">
           <div>
             <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium ring-1 ring-white/20">
-              <span aria-hidden className="size-2 rounded-full bg-accent-500" />
+              <span aria-hidden className="size-2 rounded-full bg-accent" />
               {home?.eyebrow ?? dict.home.eyebrow}
             </p>
             <h1 className="mt-6 text-[2.25rem] leading-[1.15] font-bold tracking-tight sm:text-6xl">
               {home?.heroTitle ?? dict.home.heroTitle}
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-primary-100">{home?.heroSubtitle ?? dict.home.heroSubtitle}</p>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-on-brand-muted">{home?.heroSubtitle ?? dict.home.heroSubtitle}</p>
             <div className="mt-10 flex flex-wrap gap-3">
               <ButtonLink href={href(locale, routes.events)} variant="secondary">
                 <CalendarDays aria-hidden className="size-4" />
@@ -71,13 +70,14 @@ export default async function HomePage() {
                 className="aspect-[9/10] w-full rounded-[2.5rem] object-cover shadow-2xl ring-1 ring-white/20"
               />
             ) : (
-              <div className="flex aspect-[9/10] items-center justify-center rounded-[2.5rem] bg-gradient-to-br from-primary-600 to-primary-900 ring-1 ring-white/15">
-                <div className="text-center">
-                  <LogoMark className="mx-auto size-40 drop-shadow-xl" />
+              <div className="relative flex aspect-[9/10] items-center justify-center overflow-hidden rounded-[2.5rem] bg-surface-deep ring-1 ring-white/15">
+                <Pattern className="text-on-brand/[0.08]" />
+                <div className="relative text-center">
+                  <LogoSymbol tone="reversed" className="mx-auto h-36 w-auto" />
                   <p className="mt-8 font-display text-4xl font-bold" lang="ar" dir="rtl">
                     بلادي
                   </p>
-                  <p className="mt-2 text-primary-100">Brescia · Algérie</p>
+                  <p className="mt-2 text-on-brand-muted">Brescia · Algérie</p>
                 </div>
               </div>
             )}
@@ -96,14 +96,14 @@ export default async function HomePage() {
       {/* What is Bledi */}
       <Section id="about">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
-          <h2 id="about-title" className="text-3xl font-bold tracking-tight text-primary-900 sm:text-4xl">
+          <h2 id="about-title" className="text-3xl font-bold tracking-tight text-ink-heading sm:text-4xl">
             {home?.aboutTitle ?? dict.home.aboutTitle}
           </h2>
           <div>
             <p className="text-xl leading-relaxed text-ink/90">{home?.aboutText ?? dict.home.aboutText}</p>
             <Link
               href={href(locale, routes.about)}
-              className="mt-6 inline-flex items-center gap-2 font-semibold text-primary-700 hover:text-primary-900"
+              className="mt-6 inline-flex items-center gap-2 font-semibold text-ink-link hover:text-ink-heading"
             >
               {dict.common.learnMore}
               <ArrowRight aria-hidden className="size-4 rtl:rotate-180" />
@@ -113,17 +113,17 @@ export default async function HomePage() {
       </Section>
 
       {/* How we operate */}
-      <Section id="how" title={dict.home.howTitle} className="bg-white">
+      <Section id="how" title={dict.home.howTitle} className="bg-surface-raised">
         <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {pillars.map((pillar, index) => {
             const Icon = pillarIcons[index % pillarIcons.length]
             return (
-              <li key={pillar.title} className="rounded-3xl bg-sand-50 p-6 ring-1 ring-sand-200">
-                <span className="flex size-12 items-center justify-center rounded-2xl bg-primary-600 text-white">
+              <li key={pillar.title} className="rounded-3xl bg-surface p-6 ring-1 ring-border">
+                <span className="flex size-12 items-center justify-center rounded-2xl bg-brand text-on-brand">
                   <Icon aria-hidden className="size-6" />
                 </span>
-                <h3 className="mt-5 text-xl font-bold text-primary-900">{pillar.title}</h3>
-                <p className="mt-2 leading-relaxed text-muted">{pillar.text}</p>
+                <h3 className="mt-5 text-xl font-bold text-ink-heading">{pillar.title}</h3>
+                <p className="mt-2 leading-relaxed text-ink-muted">{pillar.text}</p>
               </li>
             )
           })}
@@ -148,7 +148,7 @@ export default async function HomePage() {
             ))}
           </div>
         ) : (
-          <p className="rounded-3xl bg-white p-8 text-center text-muted ring-1 ring-sand-200">{dict.home.noEvents}</p>
+          <p className="rounded-3xl bg-surface-raised p-8 text-center text-ink-muted ring-1 ring-border">{dict.home.noEvents}</p>
         )}
       </Section>
 
@@ -156,7 +156,7 @@ export default async function HomePage() {
       <Section
         id="news"
         title={dict.home.latestNews}
-        className="bg-white"
+        className="bg-surface-raised"
         action={
           <ButtonLink href={href(locale, routes.news)} variant="ghost" className="-ms-4 sm:ms-0">
             {dict.common.allNews}
@@ -171,7 +171,7 @@ export default async function HomePage() {
             ))}
           </div>
         ) : (
-          <p className="rounded-3xl bg-sand-50 p-8 text-center text-muted ring-1 ring-sand-200">{dict.home.noNews}</p>
+          <p className="rounded-3xl bg-surface p-8 text-center text-ink-muted ring-1 ring-border">{dict.home.noNews}</p>
         )}
       </Section>
 
@@ -181,12 +181,12 @@ export default async function HomePage() {
       </Section>
 
       {/* Where we are */}
-      <Section id="where" title={dict.home.whereTitle} className="bg-white">
+      <Section id="where" title={dict.home.whereTitle} className="bg-surface-raised">
         <div className="grid gap-8 lg:grid-cols-[1fr_1.5fr]">
           <div className="space-y-5">
-            <p className="text-lg text-muted">{dict.home.whereText}</p>
-            <p className="flex items-start gap-3 text-lg font-semibold text-primary-900">
-              <MapPin aria-hidden className="mt-1 size-5 shrink-0 text-accent-500" />
+            <p className="text-lg text-ink-muted">{dict.home.whereText}</p>
+            <p className="flex items-start gap-3 text-lg font-semibold text-ink-heading">
+              <MapPin aria-hidden className="mt-1 size-5 shrink-0 text-accent-ink" />
               {settings.address}
             </p>
             {settings.isPlaceholder && (
@@ -207,24 +207,24 @@ export default async function HomePage() {
             title={dict.home.whereTitle}
             src={osmEmbedUrl(settings.location)}
             loading="lazy"
-            className="h-80 w-full rounded-3xl border-0 ring-1 ring-sand-200 lg:h-96"
+            className="h-80 w-full rounded-3xl border-0 ring-1 ring-border lg:h-96"
           />
         </div>
       </Section>
 
       {/* Join */}
-      <section className="relative overflow-hidden bg-accent-600 text-white">
-        <Pattern className="text-white/[0.08]" />
+      <section className="on-brand relative overflow-hidden bg-surface-brand text-on-brand">
+        <Pattern className="text-on-brand/[0.08]" />
         <Container className="relative flex flex-col items-start gap-6 py-16 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-bold">{home?.joinTitle ?? dict.home.joinTitle}</h2>
-            <p className="mt-3 text-lg text-white/85">{home?.joinText ?? dict.home.joinText}</p>
+            <p className="mt-3 text-lg text-on-brand-muted">{home?.joinText ?? dict.home.joinText}</p>
           </div>
           <div className="flex flex-wrap gap-3">
             <ButtonLink href={href(locale, routes.join)} variant="secondary">
               {dict.home.ctaJoin}
             </ButtonLink>
-            <ButtonLink href={href(locale, routes.donate)} variant="light">
+            <ButtonLink href={href(locale, routes.donate)} variant="accent">
               <Heart aria-hidden className="size-4" />
               {dict.home.ctaDonate}
             </ButtonLink>

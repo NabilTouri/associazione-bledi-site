@@ -6,7 +6,7 @@ import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { createPortal } from 'react-dom'
 
 import { buttonClasses } from '../ui/ButtonLink'
-import { LogoMark } from '../ui/Logo'
+import { Logo } from '../ui/Logo'
 import { NavLink } from './NavLink'
 
 interface Item {
@@ -82,7 +82,7 @@ export function MobileMenu({
         aria-controls="mobile-menu"
         aria-label={labels.open}
         data-testid="mobile-menu-button"
-        className="inline-flex size-10 items-center justify-center rounded-full border border-sand-300 bg-white text-primary-900 transition-colors hover:border-primary-500"
+        className="inline-flex size-10 items-center justify-center rounded-full border border-border-control bg-surface-raised text-ink-heading transition-colors hover:border-brand"
       >
         <Menu aria-hidden className="size-5" />
       </button>
@@ -99,23 +99,20 @@ export function MobileMenu({
             className="fixed inset-0 z-50"
             onKeyDown={onKeyDown}
           >
-            <div aria-hidden className="absolute inset-0 animate-fade-in bg-primary-900/40 backdrop-blur-sm" onClick={close} />
+            <div aria-hidden className="absolute inset-0 animate-fade-in bg-surface-deep/40 backdrop-blur-sm" onClick={close} />
             <div
               ref={panelRef}
               data-testid="mobile-menu-panel"
-              className="absolute inset-y-0 end-0 flex w-full max-w-sm animate-slide-in flex-col bg-sand-50 shadow-2xl sm:rounded-s-3xl"
+              className="absolute inset-y-0 end-0 flex w-full max-w-sm animate-slide-in flex-col bg-surface shadow-2xl sm:rounded-s-3xl"
             >
-              <div className="flex items-center justify-between gap-3 border-b border-sand-200 px-5 py-4">
-                <span className="flex items-center gap-3">
-                  <LogoMark className="size-9" />
-                  <span className="font-display text-lg font-bold text-primary-900">{siteName}</span>
-                </span>
+              <div className="flex items-center justify-between gap-3 border-b border-border px-5 py-4">
+                <Logo className="h-9 w-auto" title={siteName} />
                 <button
                   type="button"
                   onClick={close}
                   data-autofocus
                   aria-label={labels.close}
-                  className="inline-flex size-10 items-center justify-center rounded-full border border-sand-300 bg-white transition-colors hover:border-primary-500"
+                  className="inline-flex size-10 items-center justify-center rounded-full border border-border-control bg-surface-raised transition-colors hover:border-brand"
                 >
                   <X aria-hidden className="size-5" />
                 </button>
@@ -131,7 +128,7 @@ export function MobileMenu({
                   ))}
                 </ul>
               </nav>
-              <div className="grid gap-3 border-t border-sand-200 p-5">
+              <div className="grid gap-3 border-t border-border p-5">
                 <Link href={join.href} onClick={() => setOpen(false)} className={buttonClasses('secondary', 'w-full py-3')}>
                   <UserPlus aria-hidden className="size-4" />
                   {join.label}
