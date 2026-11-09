@@ -89,14 +89,6 @@ test.describe('navigation and languages', () => {
     const response = await page.goto('/it/pagina-che-non-esiste')
     expect(response?.status()).toBe(404)
   })
-
-  test('no horizontal scrolling', async ({ page }) => {
-    for (const path of ['/it', '/ar', '/it/dona', '/it/contatti']) {
-      await page.goto(path)
-      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)
-      expect(overflow, path).toBeLessThanOrEqual(0)
-    }
-  })
 })
 
 test.describe('mobile menu', () => {

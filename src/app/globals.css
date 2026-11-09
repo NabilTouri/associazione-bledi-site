@@ -76,6 +76,23 @@
   h3 {
     font-family: var(--font-display);
     text-wrap: balance;
+    /* Long words (or long titles typed in the CMS) wrap instead of widening the page. */
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Safety net: nothing may make the page scroll sideways on phones. 'clip'
+     (unlike 'hidden') keeps the sticky header working. */
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  img,
+  svg,
+  video,
+  iframe {
+    max-width: 100%;
   }
 
   /* Tailwind 4 no longer sets a pointer cursor on buttons. */

@@ -124,8 +124,8 @@ export function DonationFlow({
         })}
       </ol>
 
-      <div className="grid gap-8 lg:grid-cols-[1fr_300px]">
-        <div className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-sand-200 sm:p-8">
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-8">
+        <div className="min-w-0 rounded-3xl bg-white p-4 shadow-sm ring-1 ring-sand-200 sm:p-8">
           {step === 'amount' && (
             <form onSubmit={submitAmount} noValidate className="space-y-8">
               <fieldset>
@@ -134,7 +134,7 @@ export function DonationFlow({
                   {(['one_time', 'monthly'] as const).map((value) => (
                     <label
                       key={value}
-                      className="flex cursor-pointer items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-muted has-[:checked]:bg-white has-[:checked]:text-primary-800 has-[:checked]:shadow-sm has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primary-500"
+                      className="flex cursor-pointer items-center justify-center gap-1.5 rounded-xl px-2 py-3 text-sm font-semibold whitespace-nowrap text-muted has-[:checked]:bg-white has-[:checked]:text-primary-800 has-[:checked]:shadow-sm has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primary-500 sm:gap-2 sm:px-4"
                     >
                       <input
                         type="radio"
@@ -178,11 +178,11 @@ export function DonationFlow({
                   ))}
                 </div>
                 <label
-                  className={`mt-3 flex items-center gap-3 rounded-2xl border-2 px-4 py-3 transition-colors focus-within:border-primary-500 ${
+                  className={`mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-2xl border-2 px-4 py-3 transition-colors focus-within:border-primary-500 ${
                     preset === null ? 'border-primary-500 bg-primary-50' : 'border-sand-200 bg-white hover:border-sand-300'
                   } ${err('amount') ? 'border-accent-500!' : ''}`}
                 >
-                  <span className="text-sm font-semibold whitespace-nowrap text-muted">{labels.customAmount}</span>
+                  <span className="text-sm font-semibold text-muted">{labels.customAmount}</span>
                   <span className="ms-auto flex items-baseline gap-1.5">
                     <span className="flex items-baseline gap-1.5" dir="ltr">
                       <span aria-hidden className="text-xl font-bold text-primary-900">

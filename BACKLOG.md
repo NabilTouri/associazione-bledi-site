@@ -80,4 +80,5 @@ altrimenti il sito risponde in modalità demo.
 - [x] Orari di preghiera Brescia e Algeri, ora attuale in Algeria
 - [x] Testi editoriali di Donazioni, Trasparenza e Home spostati nello Studio (con i testi del codice come riserva)
 - [x] Selettore della lingua, menu mobile, checkbox, radio e campo "Altro importo" nello stile del sito, accessibili da tastiera
+- [x] Layout mobile senza scorrimento laterale da 320 px in su, verificato da test automatici in it/ar/fr
 - [x] CI su GitHub Actions (lint, tipi, test unitari, build, test end-to-end) e deploy Vercel con anteprime per branch

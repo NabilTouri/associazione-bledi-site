@@ -41,7 +41,7 @@ export default async function ContactPage() {
                 <Mail aria-hidden className="mt-0.5 size-5 shrink-0 text-primary-600" />
                 <div>
                   <p className="text-sm font-semibold text-muted">{dict.contact.emailTitle}</p>
-                  <a href={`mailto:${settings.email}`} className="font-medium hover:underline">
+                  <a href={`mailto:${settings.email}`} className="font-medium break-all hover:underline">
                     {settings.email}
                   </a>
                 </div>
