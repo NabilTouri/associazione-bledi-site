@@ -22,7 +22,7 @@ export function Footer({ locale, dict, settings }: { locale: Locale; dict: Dicti
       <ul className="mt-4 space-y-2.5">
         {keys.map((key) => (
           <li key={key}>
-            <Link href={href(locale, routes[key])} className="text-primary-100/80 hover:text-white">
+            <Link href={href(locale, routes[key])} className="inline-block py-0.5 text-primary-100/80 hover:text-white">
               {dict.nav[key]}
             </Link>
           </li>
@@ -34,8 +34,8 @@ export function Footer({ locale, dict, settings }: { locale: Locale; dict: Dicti
   return (
     <footer className="mt-auto bg-primary-900 text-primary-100">
       <div aria-hidden className="h-1.5 bg-gradient-to-r from-primary-500 via-white to-accent-500" />
-      <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="space-y-4">
+      <Container className="grid grid-cols-2 gap-x-6 gap-y-10 py-12 sm:py-14 lg:grid-cols-4">
+        <div className="col-span-2 space-y-4 lg:col-span-1">
           <div className="flex items-center gap-3">
             <LogoMark className="size-11" />
             <span className="font-display text-xl font-bold text-white">{settings.title}</span>
@@ -44,7 +44,7 @@ export function Footer({ locale, dict, settings }: { locale: Locale; dict: Dicti
         </div>
         {column(dict.footer.explore, footerExploreNav)}
         {column(dict.footer.support, footerSupportNav)}
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <h2 className="text-sm font-semibold tracking-wide text-white uppercase">{dict.footer.contacts}</h2>
           <ul className="mt-4 space-y-3 text-primary-100/80">
             <li className="flex gap-2">
@@ -56,7 +56,7 @@ export function Footer({ locale, dict, settings }: { locale: Locale; dict: Dicti
             {settings.email && (
               <li className="flex gap-2">
                 <Mail aria-hidden className="mt-0.5 size-4 shrink-0" />
-                <a href={`mailto:${settings.email}`} className="hover:text-white">
+                <a href={`mailto:${settings.email}`} className="break-all hover:text-white">
                   {settings.email}
                 </a>
               </li>

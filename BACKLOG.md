@@ -11,6 +11,7 @@ Legenda: 🧑‍💼 decisione o azione dell'associazione · 🛠️ lavoro tecn
 - [ ] ✍️ Inserire nello Studio i dati reali in **Impostazioni del sito**: indirizzo, coordinate, email, telefono, social
 - [ ] ✍️ Scrivere i testi di **Home page** e **Chi siamo** (storia vera, missione, valori) nelle tre lingue
 - [ ] ✍️ Inserire il direttivo (con consenso per eventuali foto)
+- [ ] ✍️ Rivedere nello Studio i testi di **Pagina Donazioni** e **Pagina Trasparenza** (oggi il sito usa i testi predefiniti)
 - [ ] 🧑‍💼 Far approvare l'**informativa privacy** definitiva e pubblicarla come _Pagina legale_ con slug `privacy`
 - [ ] 🧑‍💼 Logo e identità visiva definitivi (oggi c'è un logo provvisorio in `src/components/ui/Logo.tsx` e `src/app/icon.svg`)
 - [ ] 🧑‍💼 Far rileggere le traduzioni in arabo e francese da madrelingua
@@ -67,6 +68,7 @@ altrimenti il sito risponde in modalità demo.
 - [ ] 🛠️ Calendario Hijri e ricorrenze (Ramadan, Aïd) accanto agli orari di preghiera
 - [ ] 🛠️ Test e2e anche contro l'anteprima Vercel (`E2E_BASE_URL`) e audit di accessibilità automatico (axe)
 - [ ] 🛠️ Tema scuro
+- [ ] 🛠️ Visualizzazione a schermo intero delle foto della galleria (oggi la foto si apre in una nuova scheda)
 
 ## Fatto
 
@@ -76,4 +78,7 @@ altrimenti il sito risponde in modalità demo.
 - [x] Percorso donazione completo in modalità demo, predisposto per Stripe
 - [x] Moduli contatti e adesione con validazione e salvataggio nello Studio
 - [x] Orari di preghiera Brescia e Algeri, ora attuale in Algeria
+- [x] Testi editoriali di Donazioni, Trasparenza e Home spostati nello Studio (con i testi del codice come riserva)
+- [x] Selettore della lingua, menu mobile, checkbox, radio e campo "Altro importo" nello stile del sito, accessibili da tastiera
+- [x] Layout mobile senza scorrimento laterale da 320 px in su, verificato da test automatici in it/ar/fr
 - [x] CI su GitHub Actions (lint, tipi, test unitari, build, test end-to-end) e deploy Vercel con anteprime per branch

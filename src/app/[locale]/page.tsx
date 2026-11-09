@@ -36,13 +36,15 @@ export default async function HomePage() {
       <section className="relative overflow-hidden bg-primary-800 text-white">
         <Pattern className="text-white/[0.07]" />
         <div aria-hidden className="absolute -end-32 -top-32 size-96 rounded-full bg-primary-500/40 blur-3xl" />
-        <Container className="relative grid items-center gap-12 py-20 sm:py-28 lg:grid-cols-[1.2fr_1fr]">
+        <Container className="relative grid items-center gap-12 py-14 sm:py-28 lg:grid-cols-[1.2fr_1fr]">
           <div>
             <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium ring-1 ring-white/20">
               <span aria-hidden className="size-2 rounded-full bg-accent-500" />
-              {dict.home.eyebrow}
+              {home?.eyebrow ?? dict.home.eyebrow}
             </p>
-            <h1 className="mt-6 text-4xl leading-tight font-bold tracking-tight sm:text-6xl">{home?.heroTitle ?? dict.home.heroTitle}</h1>
+            <h1 className="mt-6 text-[2.25rem] leading-[1.15] font-bold tracking-tight sm:text-6xl">
+              {home?.heroTitle ?? dict.home.heroTitle}
+            </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-primary-100">{home?.heroSubtitle ?? dict.home.heroSubtitle}</p>
             <div className="mt-10 flex flex-wrap gap-3">
               <ButtonLink href={href(locale, routes.events)} variant="secondary">
@@ -133,7 +135,7 @@ export default async function HomePage() {
         id="events"
         title={dict.home.upcomingEvents}
         action={
-          <ButtonLink href={href(locale, routes.events)} variant="ghost">
+          <ButtonLink href={href(locale, routes.events)} variant="ghost" className="-ms-4 sm:ms-0">
             {dict.common.allEvents}
             <ArrowRight aria-hidden className="size-4 rtl:rotate-180" />
           </ButtonLink>
@@ -156,7 +158,7 @@ export default async function HomePage() {
         title={dict.home.latestNews}
         className="bg-white"
         action={
-          <ButtonLink href={href(locale, routes.news)} variant="ghost">
+          <ButtonLink href={href(locale, routes.news)} variant="ghost" className="-ms-4 sm:ms-0">
             {dict.common.allNews}
             <ArrowRight aria-hidden className="size-4 rtl:rotate-180" />
           </ButtonLink>
@@ -215,8 +217,8 @@ export default async function HomePage() {
         <Pattern className="text-white/[0.08]" />
         <Container className="relative flex flex-col items-start gap-6 py-16 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold">{dict.home.joinTitle}</h2>
-            <p className="mt-3 text-lg text-white/85">{dict.home.joinText}</p>
+            <h2 className="text-3xl font-bold">{home?.joinTitle ?? dict.home.joinTitle}</h2>
+            <p className="mt-3 text-lg text-white/85">{home?.joinText ?? dict.home.joinText}</p>
           </div>
           <div className="flex flex-wrap gap-3">
             <ButtonLink href={href(locale, routes.join)} variant="secondary">

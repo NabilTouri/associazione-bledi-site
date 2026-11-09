@@ -28,6 +28,28 @@
 
   --font-sans: var(--font-latin), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-display-latin), var(--font-arabic), ui-serif, Georgia, serif;
+
+  --animate-pop-in: pop-in 140ms ease-out;
+  --animate-fade-in: fade-in 200ms ease-out;
+  --animate-slide-in: slide-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: translateY(-4px) scale(0.98);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+  /* Panels slide in from the end side: right in LTR, left in RTL. */
+  @keyframes slide-in {
+    from {
+      transform: translateX(var(--slide-from, 100%));
+    }
+  }
 }
 
 @layer base {
@@ -37,6 +59,7 @@
   }
 
   html[dir='rtl'] {
+    --slide-from: -100%;
     --font-sans: var(--font-arabic), var(--font-latin), ui-sans-serif, system-ui, sans-serif;
     --font-display: var(--font-arabic), var(--font-display-latin), ui-serif, serif;
   }
@@ -53,6 +76,44 @@
   h3 {
     font-family: var(--font-display);
     text-wrap: balance;
+    /* Long words (or long titles typed in the CMS) wrap instead of widening the page. */
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Safety net: nothing may make the page scroll sideways on phones. 'clip'
+     (unlike 'hidden') keeps the sticky header working. */
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  img,
+  svg,
+  video,
+  iframe {
+    max-width: 100%;
+  }
+
+  /* Tailwind 4 no longer sets a pointer cursor on buttons. */
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']),
+  [role='option'] {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background-color: var(--color-primary-100);
+    color: var(--color-primary-900);
+  }
+
+  a,
+  button,
+  input,
+  label,
+  select,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
   }
 
   :focus-visible {
@@ -130,6 +191,79 @@
     box-shadow: 0 0 0 3px var(--color-primary-100);
   }
   .field-input[aria-invalid='true'] {
+    border-color: var(--color-accent-500);
+  }
+  .field-input::placeholder {
+    color: color-mix(in oklab, var(--color-muted) 55%, transparent);
+  }
+  /* Keep the site colours when the browser autofills a field. */
+  .field-input:-webkit-autofill {
+    -webkit-text-fill-color: var(--color-ink);
+    box-shadow: 0 0 0 1000px white inset;
+  }
+  textarea.field-input {
+    resize: vertical;
+    min-height: 6rem;
+  }
+
+  /* Checkbox and radio drawn in the site style (native look removed). */
+  .check-input,
+  .radio-input {
+    appearance: none;
+    flex-shrink: 0;
+    display: inline-grid;
+    place-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0;
+    border: 1.5px solid var(--color-sand-300);
+    background-color: white;
+    cursor: pointer;
+    transition:
+      background-color 150ms,
+      border-color 150ms,
+      box-shadow 150ms;
+  }
+  .check-input {
+    border-radius: 0.4rem;
+  }
+  .radio-input {
+    border-radius: 9999px;
+  }
+  .check-input::before,
+  .radio-input::before {
+    content: '';
+    transform: scale(0);
+    transition: transform 120ms ease-out;
+  }
+  .check-input::before {
+    width: 0.7rem;
+    height: 0.7rem;
+    background-color: white;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+  .radio-input::before {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 9999px;
+    background-color: var(--color-primary-600);
+  }
+  .check-input:hover,
+  .radio-input:hover {
+    border-color: var(--color-primary-500);
+  }
+  .check-input:checked {
+    background-color: var(--color-primary-600);
+    border-color: var(--color-primary-600);
+  }
+  .radio-input:checked {
+    border-color: var(--color-primary-600);
+  }
+  .check-input:checked::before,
+  .radio-input:checked::before {
+    transform: scale(1);
+  }
+  .check-input[aria-invalid='true'] {
     border-color: var(--color-accent-500);
   }
 }

@@ -94,14 +94,14 @@ export function ConsentCheckbox({
 }) {
   return (
     <div>
-      <label className="flex items-start gap-3 text-sm">
+      <label className="flex cursor-pointer items-start gap-3 text-sm">
         <input
           type="checkbox"
           name="consent"
           required
           aria-invalid={error ? true : undefined}
           aria-describedby={error ? 'consent-error' : undefined}
-          className="mt-0.5 size-5 shrink-0 rounded accent-primary-600"
+          className="check-input mt-0.5"
         />
         <span>
           <a href={privacyHref} className="underline underline-offset-2" target="_blank" rel="noopener noreferrer">

@@ -67,9 +67,9 @@ export function MembershipForm({
             {types.map((type, index) => (
               <label
                 key={type.value}
-                className="flex cursor-pointer items-center gap-2 rounded-xl border border-sand-300 bg-white px-4 py-3 text-sm font-medium has-[:checked]:border-primary-500 has-[:checked]:bg-primary-50 has-[:checked]:text-primary-800"
+                className="flex cursor-pointer items-center gap-3 rounded-xl border border-sand-300 bg-white px-4 py-3 text-sm font-medium transition-colors hover:border-primary-500 has-[:checked]:border-primary-500 has-[:checked]:bg-primary-50 has-[:checked]:text-primary-800 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primary-500"
               >
-                <input type="radio" name="type" value={type.value} defaultChecked={index === 0} className="accent-primary-600" />
+                <input type="radio" name="type" value={type.value} defaultChecked={index === 0} className="radio-input" />
                 {type.label}
               </label>
             ))}

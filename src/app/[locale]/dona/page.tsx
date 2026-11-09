@@ -11,7 +11,7 @@ import { Section } from '@/components/ui/Section'
 import { getDictionary, getLocale } from '@/i18n/dictionaries'
 import { getPaymentProvider } from '@/lib/payments'
 import { href, resolveSettings, routes } from '@/lib/site'
-import { getSiteSettings } from '@/sanity/lib/data'
+import { getDonatePage, getSiteSettings } from '@/sanity/lib/data'
 
 export async function generateMetadata(): Promise<Metadata> {
   const dict = getDictionary(await getLocale())
@@ -49,7 +49,24 @@ function WayCard({
 export default async function DonatePage() {
   const locale = await getLocale()
   const dict = getDictionary(locale)
-  const settings = resolveSettings(await getSiteSettings(locale), dict)
+  const [settingsData, page] = await Promise.all([getSiteSettings(locale), getDonatePage(locale)])
+  const settings = resolveSettings(settingsData, dict)
+  const text = dict.donate
+  // Texts edited in Sanity ("Pagina Donazioni"), with the dictionary as fallback.
+  const content = {
+    demoTitle: page?.demoTitle ?? text.demoTitle,
+    demoText: page?.demoText ?? text.demoBanner,
+    impact: {
+      '10': page?.impact?.['10'] ?? text.impact['10'],
+      '25': page?.impact?.['25'] ?? text.impact['25'],
+      '50': page?.impact?.['50'] ?? text.impact['50'],
+      '100': page?.impact?.['100'] ?? text.impact['100'],
+    },
+    bank: { title: page?.bank?.title ?? text.bankTitle, text: page?.bank?.text ?? null, fallback: text.bankText },
+    five: { title: page?.fiveXMille?.title ?? text.fiveTitle, text: page?.fiveXMille?.text ?? null, fallback: text.fiveText },
+    tax: { title: page?.tax?.title ?? text.taxTitle, text: page?.tax?.text ?? text.taxText },
+    volunteer: { title: page?.volunteer?.title ?? text.volunteerTitle, text: page?.volunteer?.text ?? text.volunteerText },
+  }
   const isDemo = getPaymentProvider().isDemo || !settings.donationsEnabled
   const registered = settings.runtsStatus === 'registered'
 
@@ -58,48 +75,54 @@ export default async function DonatePage() {
       <PageHeader title={dict.donate.title} intro={dict.donate.intro} />
       <Container className="py-14">
         {isDemo && (
-          <Notice variant="demo" title={dict.donate.demoTitle} className="mb-10">
-            {dict.donate.demoBanner}
+          <Notice variant="demo" title={content.demoTitle} className="mb-10">
+            {content.demoText}
           </Notice>
         )}
-        <DonationFlow locale={locale} labels={dict.donate} formLabels={dict.forms} />
+        <DonationFlow locale={locale} labels={dict.donate} formLabels={dict.forms} impact={content.impact} />
       </Container>
 
       <Section title={dict.donate.otherWaysTitle} className="bg-white">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <WayCard
             icon={<Landmark aria-hidden className="size-5" />}
-            title={dict.donate.bankTitle}
+            title={content.bank.title}
             unavailableLabel={settings.iban ? undefined : dict.common.comingSoon}
           >
             {settings.iban ? (
-              <p className="font-mono text-base font-semibold break-all text-ink" dir="ltr">
-                {settings.iban}
-              </p>
+              <>
+                {content.bank.text && <p>{content.bank.text}</p>}
+                <p className="font-mono text-base font-semibold break-all text-ink" dir="ltr">
+                  {settings.iban}
+                </p>
+              </>
             ) : (
-              dict.donate.bankText
+              (content.bank.text ?? content.bank.fallback)
             )}
           </WayCard>
           <WayCard
             icon={<Percent aria-hidden className="size-5" />}
-            title={dict.donate.fiveTitle}
+            title={content.five.title}
             unavailableLabel={registered ? undefined : dict.common.notAvailableYet}
           >
             {registered && settings.fiscalCode ? (
-              <p className="font-mono text-base font-semibold text-ink">{settings.fiscalCode}</p>
+              <>
+                {content.five.text && <p>{content.five.text}</p>}
+                <p className="font-mono text-base font-semibold text-ink">{settings.fiscalCode}</p>
+              </>
             ) : (
-              dict.donate.fiveText
+              (content.five.text ?? content.five.fallback)
             )}
           </WayCard>
           <WayCard
             icon={<Receipt aria-hidden className="size-5" />}
-            title={dict.donate.taxTitle}
+            title={content.tax.title}
             unavailableLabel={registered ? undefined : dict.common.notAvailableYet}
           >
-            {dict.donate.taxText}
+            {content.tax.text}
           </WayCard>
-          <WayCard icon={<HandHeart aria-hidden className="size-5" />} title={dict.donate.volunteerTitle}>
-            <p>{dict.donate.volunteerText}</p>
+          <WayCard icon={<HandHeart aria-hidden className="size-5" />} title={content.volunteer.title}>
+            <p>{content.volunteer.text}</p>
             <ButtonLink href={href(locale, routes.join)} variant="ghost" className="-ms-3 mt-3">
               {dict.nav.join}
             </ButtonLink>

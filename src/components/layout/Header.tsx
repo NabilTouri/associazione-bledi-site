@@ -16,12 +16,12 @@ export function Header({ locale, dict, siteName }: { locale: Locale; dict: Dicti
   const items = mainNav.map((key) => ({ key, label: dict.nav[key], href: href(locale, routes[key]) }))
   return (
     <header className="sticky top-0 z-40 border-b border-sand-200/80 bg-sand-50/90 backdrop-blur supports-[backdrop-filter]:bg-sand-50/75">
-      <Container className="flex h-16 items-center justify-between gap-4 sm:h-20">
-        <Link href={href(locale)} className="flex items-center gap-3 rounded-lg">
-          <LogoMark className="size-10 sm:size-11" />
-          <span className="leading-tight">
-            <span className="block font-display text-lg font-bold text-primary-900">{siteName}</span>
-            <span className="hidden text-xs text-muted sm:block">{dict.meta.tagline}</span>
+      <Container className="flex h-16 items-center justify-between gap-2 sm:h-20 sm:gap-4">
+        <Link href={href(locale)} className="flex min-w-0 items-center gap-2.5 rounded-lg sm:gap-3">
+          <LogoMark className="size-9 shrink-0 sm:size-11" />
+          <span className="min-w-0 leading-tight">
+            <span className="line-clamp-2 font-display text-[15px] font-bold text-primary-900 sm:line-clamp-1 sm:text-lg">{siteName}</span>
+            <span className="hidden truncate text-xs text-muted sm:block">{dict.meta.tagline}</span>
           </span>
         </Link>
 
@@ -35,7 +35,7 @@ export function Header({ locale, dict, siteName }: { locale: Locale; dict: Dicti
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <LanguageSwitcher locale={locale} label={dict.nav.language} />
           <div className="hidden sm:block">
             <ButtonLink href={href(locale, routes.donate)} variant="accent">
@@ -44,7 +44,9 @@ export function Header({ locale, dict, siteName }: { locale: Locale; dict: Dicti
             </ButtonLink>
           </div>
           <MobileMenu
-            items={[...items, { key: 'join', label: dict.nav.join, href: href(locale, routes.join) }]}
+            siteName={siteName}
+            items={[{ key: 'home', label: dict.nav.home, href: href(locale) }, ...items]}
+            join={{ label: dict.nav.join, href: href(locale, routes.join) }}
             donate={{ label: dict.nav.donate, href: href(locale, routes.donate) }}
             labels={{ open: dict.nav.menu, close: dict.nav.close }}
           />
